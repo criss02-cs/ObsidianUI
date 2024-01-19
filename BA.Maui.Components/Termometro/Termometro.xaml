@@ -1,106 +1,105 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentView
-    x:Class="BA.Maui.Components.Termometro.Termometro"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Loaded="Termometro_OnParentChanged">
-    <Grid
-        x:Name="grid"
-        HeightRequest="300"
-        WidthRequest="150">
+<ContentView x:Class="BA.Maui.Components.Termometro.Termometro"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Loaded="Termometro_OnParentChanged"
+             x:Name="this">
+    <Grid x:Name="grid"
+          HeightRequest="300"
+          WidthRequest="150">
         <Grid.RowDefinitions>
             <RowDefinition />
-            <RowDefinition x:Name="riga2" Height="0.3*" />
+            <RowDefinition Height="0.3*" />
         </Grid.RowDefinitions>
-        <Border
-            x:Name="path"
-            Grid.RowSpan="2"
-            Margin="0,0,70,45"
-            BackgroundColor="White"
-            HeightRequest="20"
-            Stroke="Black"
-            StrokeThickness="0"
-            VerticalOptions="End"
-            WidthRequest="50"
-            ZIndex="4">
+        <Border x:Name="path"
+                Grid.RowSpan="2"
+                Margin="0,0,70,45"
+                BackgroundColor="White"
+                HeightRequest="20"
+                Stroke="Black"
+                StrokeThickness="0"
+                VerticalOptions="End"
+                WidthRequest="50"
+                ZIndex="4">
             <Border.StrokeShape>
-                <Path Aspect="Fill" Data="M 0 0 L 0 100 L 200 100 L 200 80 L 260 50 L 200 20 L 200 0 Z " />
+                <Path Aspect="Fill"
+                      Data="M 0 0 L 0 100 L 200 100 L 200 80 L 260 50 L 200 20 L 200 0 Z " />
             </Border.StrokeShape>
             <Border.Shadow>
-                <Shadow
-                    Opacity="0.4"
-                    Radius="3"
-                    Offset="4,2" />
+                <Shadow Opacity="0.4"
+                        Radius="3"
+                        Offset="4,2" />
             </Border.Shadow>
-            <Label
-                x:Name="label"
-                FontSize="12"
-                HorizontalOptions="Start"
-                Margin="5,0,0,0"
-                TextColor="Black"
-                VerticalOptions="Center" />
+            <Label x:Name="label"
+                   FontSize="12"
+                   HorizontalOptions="Start"
+                   Margin="5,0,0,0"
+                   TextColor="Black"
+                   VerticalOptions="Center" />
         </Border>
 
-        <Border
-            Grid.RowSpan="2"
-            BackgroundColor="#333"
-            StrokeThickness="0"
-            WidthRequest="40"
-            ZIndex="0">
+        <Border Grid.RowSpan="2"
+                BindingContext="{x:Reference this}"
+                BackgroundColor="{Binding BorderColor}"
+                StrokeThickness="0"
+                WidthRequest="40"
+                ZIndex="0">
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="40" />
 
             </Border.StrokeShape>
         </Border>
-        <Border
-            Grid.Row="1"
-            BackgroundColor="#333"
-            StrokeThickness="0"
-            WidthRequest="70"
-            ZIndex="0">
+
+        <Border Grid.Row="1"
+                BindingContext="{x:Reference this}"
+                BackgroundColor="{Binding BorderColor}"
+                StrokeThickness="0"
+                WidthRequest="70"
+                ZIndex="0">
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="35" />
             </Border.StrokeShape>
         </Border>
 
-        <Border
-            x:Name="scavo"
-            Grid.RowSpan="2"
-            Margin="0,10,0,50"
-                BackgroundColor="#333"
-            StrokeThickness="0"
-            WidthRequest="20"
-            ZIndex="1">
+        <Border x:Name="scavo"
+                BackgroundColor="Black"
+                Grid.RowSpan="2"
+                Margin="0,10,0,50"
+                StrokeThickness="0"
+                WidthRequest="20"
+                ZIndex="1">
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="40,40,0,0" />
 
             </Border.StrokeShape>
         </Border>
 
-        <Border
-            x:Name="pippo"
-            Grid.RowSpan="2"
-            Margin="0,10,0,55"
-            BackgroundColor="Red"
-            StrokeThickness="0"
-            VerticalOptions="End"
-            WidthRequest="20"
-            ZIndex="1">
+        <Border  BindingContext="{x:Reference this}"
+                 BackgroundColor="{Binding TemperaturaColor}"
+                 x:Name="barratemperatura"
+                 Grid.RowSpan="2"
+                 Margin="0,10,0,55"
+                 StrokeThickness="0"
+                 VerticalOptions="End"
+                 WidthRequest="20"
+                 ZIndex="1">
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="40,40,0,0" />
 
             </Border.StrokeShape>
         </Border>
-        <Border
-            Grid.Row="1"
-            BackgroundColor="Red"
-            HeightRequest="50"
-            StrokeThickness="0"
-            WidthRequest="50"
-            ZIndex="2">
+
+        <Border Grid.Row="1"
+                BindingContext="{x:Reference this}"
+                BackgroundColor="{Binding TemperaturaColor}"
+                HeightRequest="50"
+                StrokeThickness="0"
+                WidthRequest="50"
+                ZIndex="2">
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="25" />
             </Border.StrokeShape>
         </Border>
     </Grid>
+
 </ContentView>
