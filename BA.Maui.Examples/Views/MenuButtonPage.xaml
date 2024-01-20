@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BA.Maui.Examples.Views.MenuButtonPage"
+             xmlns:menubutton="clr-namespace:BA.Maui.Components.MenuButton;assembly=BA.Maui.Components"
+             xmlns:viewmodels="clr-namespace:BA.Maui.Examples.ViewModels"
+             Title="MenuButtonPage">
+    <VerticalStackLayout Spacing="20"
+                         Margin="0,30,0,50" HorizontalOptions="Center" VerticalOptions="Center">
+        <menubutton:MenuButton x:Name="menubutton" 
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+    </VerticalStackLayout>
+</ContentPage>

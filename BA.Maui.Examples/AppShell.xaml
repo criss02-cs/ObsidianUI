@@ -1,21 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<Shell
-    x:Class="BA.Maui.Examples.AppShell"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:BA.Maui.Examples"
-    xmlns:views="clr-namespace:BA.Maui.Examples.Views"
-    xmlns:fa="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
-    Title="BA.Maui.Examples">
+<Shell x:Class="BA.Maui.Examples.AppShell"
+       xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:BA.Maui.Examples"
+       xmlns:views="clr-namespace:BA.Maui.Examples.Views"
+       xmlns:fa="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
+       Title="BA.Maui.Examples">
+
+    <FlyoutItem Title="MenuButton">
+        <FlyoutItem.Icon>
+            <FontImageSource FontFamily="FASolid"
+                             Glyph="{x:Static fa:Solid.Bars}"
+                             Color="White" />
+        </FlyoutItem.Icon>
+        <ShellContent Title="Menu Button"
+                      ContentTemplate="{DataTemplate views:MenuButtonPage}"
+                      Route="MenuButtonPage" />
+    </FlyoutItem>
 
     <FlyoutItem Title="Termometro">
         <FlyoutItem.Icon>
-            <FontImageSource FontFamily="FASolid" Glyph="{x:Static fa:Solid.TemperatureHalf}" Color="White" />
+            <FontImageSource FontFamily="FASolid"
+                             Glyph="{x:Static fa:Solid.TemperatureHalf}"
+                             Color="White" />
         </FlyoutItem.Icon>
-        <ShellContent
-            Title="Home"
-            ContentTemplate="{DataTemplate views:TermometroPage}"
-            Route="TermometroPage" />
+        <ShellContent Title="Termometro"
+                      ContentTemplate="{DataTemplate views:TermometroPage}"
+                      Route="TermometroPage" />
     </FlyoutItem>
 
 </Shell>
