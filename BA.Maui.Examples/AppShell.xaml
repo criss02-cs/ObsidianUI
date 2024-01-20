@@ -8,6 +8,16 @@
     xmlns:fa="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
     Title="BA.Maui.Examples">
 
+    <FlyoutItem Title="Color Picker">
+        <FlyoutItem.Icon>
+            <FontImageSource FontFamily="FASolid" Glyph="{x:Static fa:Solid.Sliders}" Color="White" />
+        </FlyoutItem.Icon>
+        <ShellContent
+            Title="Rgb Color Picker"
+            ContentTemplate="{DataTemplate views:RgbColorPickerPage}"
+            Route="RgbColorPickerPage" />
+    </FlyoutItem>
+
     <FlyoutItem Title="Termometro">
         <FlyoutItem.Icon>
             <FontImageSource FontFamily="FASolid" Glyph="{x:Static fa:Solid.TemperatureHalf}" Color="White" />
@@ -17,5 +27,7 @@
             ContentTemplate="{DataTemplate views:TermometroPage}"
             Route="TermometroPage" />
     </FlyoutItem>
+
+    
 
 </Shell>
