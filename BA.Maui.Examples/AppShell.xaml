@@ -27,6 +27,16 @@
             ContentTemplate="{DataTemplate views:TermometroPage}"
             Route="TermometroPage" />
     </FlyoutItem>
+    <FlyoutItem Title="LifeCyclePage">
+        <FlyoutItem.Icon>
+            <FontImageSource FontFamily="FASolid"
+                             Glyph="{x:Static fa:Solid.Pager}"
+                             Color="White" />
+        </FlyoutItem.Icon>
+        <ShellContent Title="LifeCyclePage"
+                      ContentTemplate="{DataTemplate views:LifeCyclePage}"
+                      Route="LifeCyclePage" />
+    </FlyoutItem>
 
     
 
