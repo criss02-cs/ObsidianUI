@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<baseContentPage:BaseContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:baseContentPage="clr-namespace:ObsidianUI.Components.BaseContentPage;assembly=ObsidianUI.Components"
+             xmlns:viewModels="using:ObsidianUI.Examples.ViewModels"
+             x:Class="ObsidianUI.Examples.Views.LifeCyclePage"
+             x:DataType="viewModels:LifeCyclePageViewModel">
+    <baseContentPage:BaseContentPage.BindingContext>
+        <viewModels:LifeCyclePageViewModel />
+    </baseContentPage:BaseContentPage.BindingContext>
+    <StackLayout>
+        <Label Text="Appearing called" IsVisible="{Binding IsAppearingCalled}" />
+        <Label Text="Disappearing called" IsVisible="{Binding IsDisappearingCalled}" />
+    </StackLayout>
+</baseContentPage:BaseContentPage>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="ObsidianUI.Examples.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:ObsidianUI.Examples"
+    xmlns:views="clr-namespace:ObsidianUI.Examples.Views"
+    xmlns:fa="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
+    Title="ObsidianUI.Examples">
+
+    <FlyoutItem Title="Color Picker">
+        <FlyoutItem.Icon>
+            <FontImageSource FontFamily="FASolid" Glyph="{x:Static fa:Solid.Sliders}" Color="White" />
+        </FlyoutItem.Icon>
+        <ShellContent
+            Title="Rgb Color Picker"
+            ContentTemplate="{DataTemplate views:RgbColorPickerPage}"
+            Route="RgbColorPickerPage" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Termometro">
+        <FlyoutItem.Icon>
+            <FontImageSource FontFamily="FASolid" Glyph="{x:Static fa:Solid.TemperatureHalf}" Color="White" />
+        </FlyoutItem.Icon>
+        <ShellContent
+            Title="Home"
+            ContentTemplate="{DataTemplate views:TermometroPage}"
+            Route="TermometroPage" />
+    </FlyoutItem>
+    <FlyoutItem Title="LifeCyclePage">
+        <FlyoutItem.Icon>
+            <FontImageSource FontFamily="FASolid"
+                             Glyph="{x:Static fa:Solid.Pager}"
+                             Color="White" />
+        </FlyoutItem.Icon>
+        <ShellContent Title="LifeCyclePage"
+                      ContentTemplate="{DataTemplate views:LifeCyclePage}"
+                      Route="LifeCyclePage" />
+    </FlyoutItem>
+
+    
+
+</Shell>

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:termometro="clr-namespace:ObsidianUI.Components.Termometro;assembly=ObsidianUI.Components"
+             x:Class="ObsidianUI.Examples.Views.TermometroPage"
+             xmlns:viewmodels="clr-namespace:ObsidianUI.Examples.ViewModels"
+             Title="TermometroPage">
+    <Shell.TitleView>
+        <HorizontalStackLayout VerticalOptions="Fill">
+            <Label Text="Termometro"
+                   FontFamily="Strande2"
+                   TextColor="White"
+                   Margin="50,0,0,0"
+                   VerticalTextAlignment="Center"
+                   VerticalOptions="Center"
+                   HeightRequest="50"
+                   FontSize="Medium" />
+        </HorizontalStackLayout>
+    </Shell.TitleView>
+
+    <ContentPage.BindingContext>
+        <viewmodels:TermometroPageViewModel />
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout Spacing="20"
+                         Margin="0,30,0,50">
+        <termometro:Termometro x:Name="termometro" MaxValue="{Binding MaxTemperature}"
+                               Temperatura="{Binding Temperature}"
+                               Speed="{Binding Speed}"
+                               VerticalOptions="End"
+                               TemperaturaColor="{Binding TemperaturaColor}"
+                               BorderColor="{Binding BorderColor}" />
+        <Border Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                VerticalOptions="Center"
+                HorizontalOptions="Fill"
+                HeightRequest="60"
+                Margin="20,0,20,0"
+                StrokeShape="RoundRectangle, 10"
+                BackgroundColor="#333">
+            <Grid ColumnDefinitions="*,*,0.5*">
+                <Label Text="Temp."
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"
+                       FontAttributes="Bold"
+                       FontSize="18"
+                       Margin="5,0,0,0" />
+                <Entry Grid.Column="1"
+                       TextColor="White"
+                       Text="{Binding Temperature}"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Fill"
+                       Keyboard="Numeric" />
+                <Label Grid.Column="2"
+                       Text="°C"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"
+                       FontAttributes="Bold"
+                       Margin="0,0,5,0"
+                       FontSize="18" />
+            </Grid>
+        </Border>
+        <HorizontalStackLayout HorizontalOptions="Center"
+                               Spacing="10">
+
+            <Border Grid.Row="1"
+                    Grid.Column="0"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    HeightRequest="60"
+                    WidthRequest="170"
+                    StrokeShape="RoundRectangle, 10"
+                    BackgroundColor="#333">
+                <Grid ColumnDefinitions="*,*,0.5*">
+                    <Label Text="Max value"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           FontAttributes="Bold"
+                           FontSize="18"
+                           Margin="5,0,0,0" />
+                    <Entry Grid.Column="1"
+                           TextColor="White"
+                           Text="{Binding MaxTemperature}"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Fill"
+                           Keyboard="Numeric" />
+                    <Label Grid.Column="2"
+                           Text="°C"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           FontAttributes="Bold"
+                           Margin="0,0,5,0"
+                           FontSize="18" />
+                </Grid>
+            </Border>
+            <Border Grid.Row="1"
+                    Grid.Column="1"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    HeightRequest="60"
+                    WidthRequest="170"
+                    StrokeShape="RoundRectangle, 10"
+                    BackgroundColor="#333">
+                <Grid ColumnDefinitions="*,*,0.5*">
+                    <Label Text="Speed"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           FontAttributes="Bold"
+                           FontSize="18"
+                           Margin="2,0,0,0" />
+                    <Entry Grid.Column="1"
+                           TextColor="White"
+                           Text="{Binding Speed}"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Fill"
+                           Keyboard="Numeric" />
+                    <Label Grid.Column="2"
+                           Text="ms"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           FontAttributes="Bold"
+                           Margin="0,0,5,0"
+                           FontSize="18" />
+                </Grid>
+            </Border>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout HorizontalOptions="Center"
+                               Spacing="10">
+            <Border Grid.Row="1"
+                    Grid.Column="0"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    HeightRequest="60"
+                    WidthRequest="170"
+                    StrokeShape="RoundRectangle, 10"
+                    BackgroundColor="#333">
+                <Grid ColumnDefinitions="*,0.2*,*">
+                    <Label Text="Temp Color"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           FontAttributes="Bold"
+                           FontSize="18"
+                           Margin="5,0,0,0" />
+                    <Label Grid.Column="1"
+                           Text="#"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           FontAttributes="Bold"
+                           Margin="0,0,5,0"
+                           FontSize="18" />
+                    <Entry x:Name="txtTempColor"
+                        Grid.Column="2"
+                           TextColor="White"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Fill"
+                           TextChanged="TemperaturaColor_TextChange" />
+                </Grid> 
+            </Border>
+            <Border Grid.Row="1"
+                    Grid.Column="1"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    HeightRequest="60"
+                    WidthRequest="170"
+                    StrokeShape="RoundRectangle, 10"
+                    BackgroundColor="#333">
+                <Grid ColumnDefinitions="*,0.2*,*">
+                    <Label Text="Border Color"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           FontAttributes="Bold"
+                           FontSize="18"
+                           Margin="5,0,0,0" />
+                    <Label Grid.Column="1"
+                           Text="#"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           FontAttributes="Bold"
+                           Margin="0,0,5,0"
+                           FontSize="18" />
+                    <Entry x:Name="txtBorderColor"
+                        Grid.Column="2"
+                           TextColor="White"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Fill"
+                           TextChanged="BorderColor_TextChanged"/>
+                </Grid>
+            </Border>
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>
