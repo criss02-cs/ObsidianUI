@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ObsidianUI.Components.StarRating.StarRating"
+             x:Name="this"
+             BindingContext="{x:Reference this}">
+    <Grid ColumnDefinitions="*,*,*,*,*,*,*,*,*,*" ColumnSpacing="-2">
+        <Border Grid.Column="0"
+                x:Name="s1a"
+                BackgroundColor="{Binding StarsColor}"
+                StrokeThickness="0"
+                Margin="5,0,0,0">
+            <Border.StrokeShape>
+                <Path Data="M 12 10 l -7 4 l 1 -8 l -6 -6 l 8 -1 l 4 -8 Z"
+                      Aspect="Fill"></Path>
+            </Border.StrokeShape>
+        </Border>
+        <Border x:Name="s1b"
+                Grid.Column="1"
+                BackgroundColor="{Binding StarsColor}"
+                StrokeThickness="0"
+                Margin="0,0,5,0"
+                >
+            <Border.StrokeShape>
+                <Path Data="M 12 -9 l 4 8 l 8 1 l -6 6 l 1 8 l -7 -4 z"
+                      Aspect="Fill"></Path>
+            </Border.StrokeShape>
+        </Border>
+        <Border Grid.Column="2"
+                x:Name="s2a"
+                BackgroundColor="{Binding StarsColor}"
+                StrokeThickness="0"
+                Margin="5,0,0,0"
+                >
+            <Border.StrokeShape>
+                <Path Data="M 12 10 l -7 4 l 1 -8 l -6 -6 l 8 -1 l 4 -8 Z"
+                      Aspect="Fill"></Path>
+            </Border.StrokeShape>
+        </Border>
+        <Border x:Name="s2b"
+                Grid.Column="3"
+                BackgroundColor="{Binding StarsColor}"
+                StrokeThickness="0"
+                Margin="0,0,5,0">
+            <Border.StrokeShape>
+                <Path Data="M 12 -9 l 4 8 l 8 1 l -6 6 l 1 8 l -7 -4 z"
+                      Aspect="Fill"></Path>
+            </Border.StrokeShape>
+        </Border>
+
+        <Border Grid.Column="4"
+                x:Name="s3a"
+                BackgroundColor="{Binding StarsColor}"
+                StrokeThickness="0"
+                Margin="5,0,0,0">
+            <Border.StrokeShape>
+                <Path Data="M 12 10 l -7 4 l 1 -8 l -6 -6 l 8 -1 l 4 -8 Z"
+                      Aspect="Fill"></Path>
+            </Border.StrokeShape>
+        </Border>
+        <Border x:Name="s3b"
+                Grid.Column="5"
+                BackgroundColor="{Binding StarsColor}"
+                StrokeThickness="0"
+                Margin="0,0,5,0">
+            <Border.StrokeShape>
+                <Path Data="M 12 -9 l 4 8 l 8 1 l -6 6 l 1 8 l -7 -4 z"
+                      Aspect="Fill"></Path>
+            </Border.StrokeShape>
+        </Border>
+
+        <Border Grid.Column="6"
+                x:Name="s4a"
+                BackgroundColor="{Binding StarsColor}"
+                StrokeThickness="0"
+                Margin="5,0,0,0">
+            <Border.StrokeShape>
+                <Path Data="M 12 10 l -7 4 l 1 -8 l -6 -6 l 8 -1 l 4 -8 Z"
+                      Aspect="Fill"></Path>
+            </Border.StrokeShape>
+        </Border>
+        <Border x:Name="s4b"
+                Grid.Column="7"
+                BackgroundColor="{Binding StarsColor}"
+                StrokeThickness="0"
+                Margin="0,0,5,0">
+            <Border.StrokeShape>
+                <Path Data="M 12 -9 l 4 8 l 8 1 l -6 6 l 1 8 l -7 -4 z"
+                      Aspect="Fill"></Path>
+            </Border.StrokeShape>
+        </Border>
+        <Border Grid.Column="8"
+                x:Name="s5a"
+                BackgroundColor="{Binding StarsColor}"
+                StrokeThickness="0"
+                Margin="5,0,0,0">
+            <Border.StrokeShape>
+                <Path Data="M 12 10 l -7 4 l 1 -8 l -6 -6 l 8 -1 l 4 -8 Z"
+                      Aspect="Fill"></Path>
+            </Border.StrokeShape>
+        </Border>
+        <Border x:Name="s5b"
+                Grid.Column="9"
+                BackgroundColor="{Binding StarsColor}"
+                StrokeThickness="0"
+                Margin="0,0,5,0">
+            <Border.StrokeShape>
+                <Path Data="M 12 -9 l 4 8 l 8 1 l -6 6 l 1 8 l -7 -4 z"
+                      Aspect="Fill"></Path>
+            </Border.StrokeShape>
+        </Border>
+    </Grid>
+
+</ContentView>

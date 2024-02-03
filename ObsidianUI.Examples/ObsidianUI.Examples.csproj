@@ -74,6 +74,9 @@
 	  <MauiXaml Update="Views\RgbColorPickerPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\StarRatingPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\TermometroPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

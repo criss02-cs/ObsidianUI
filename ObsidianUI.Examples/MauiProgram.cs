@@ -33,6 +33,8 @@ namespace ObsidianUI.Examples
         {
             builder.Services.AddSingleton<TermometroPage>();
             builder.Services.AddSingleton<TermometroPageViewModel>();
+
+            builder.Services.AddSingleton<StarRatingPage>();
             return builder;
         }
     }
