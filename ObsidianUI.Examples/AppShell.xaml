@@ -3,10 +3,19 @@
     x:Class="ObsidianUI.Examples.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:ObsidianUI.Examples"
     xmlns:views="clr-namespace:ObsidianUI.Examples.Views"
     xmlns:fa="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
     Title="ObsidianUI.Examples">
+
+    <FlyoutItem Title="Star Rating">
+        <FlyoutItem.Icon>
+            <FontImageSource FontFamily="FASolid" Glyph="{x:Static fa:Solid.StarHalf}" Color="Gold" />
+        </FlyoutItem.Icon>
+        <ShellContent
+            Title="Star rating"
+            ContentTemplate="{DataTemplate views:StarRatingPage}"
+            Route="StarRatingPage" />
+    </FlyoutItem>
 
     <FlyoutItem Title="Color Picker">
         <FlyoutItem.Icon>
@@ -27,6 +36,7 @@
             ContentTemplate="{DataTemplate views:TermometroPage}"
             Route="TermometroPage" />
     </FlyoutItem>
+
     <FlyoutItem Title="LifeCyclePage">
         <FlyoutItem.Icon>
             <FontImageSource FontFamily="FASolid"

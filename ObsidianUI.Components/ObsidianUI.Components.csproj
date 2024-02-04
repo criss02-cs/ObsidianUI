@@ -27,6 +27,9 @@
 	  <MauiXaml Update="RgbColorPicker\RgbColorPicker.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="StarRating\StarRating.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Termometro\Termometro.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
