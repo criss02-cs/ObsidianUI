@@ -1,132 +1,143 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ObsidianUI.Examples.Views.StarRatingPage"
-             xmlns:components="clr-namespace:ObsidianUI.Components.StarRating;assembly=ObsidianUI.Components"
-             Title="StarRatingPage"
-             x:Name="this"
-             BackgroundColor="{StaticResource Gray950}">
+<ContentPage
+    x:Class="ObsidianUI.Examples.Views.StarRatingPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:components="clr-namespace:ObsidianUI.Components.StarRating;assembly=ObsidianUI.Components"
+    x:Name="this"
+    Title="StarRatingPage"
+    BackgroundColor="{StaticResource Gray950}">
     <Shell.TitleView>
         <HorizontalStackLayout VerticalOptions="Fill">
-            <Label Text="Star rating"
-                   FontFamily="Strande2"
-                   TextColor="White"
-                   Margin="50,0,0,0"
-                   VerticalTextAlignment="Center"
-                   VerticalOptions="Center"
-                   HeightRequest="50"
-                   FontSize="Medium" />
+            <Label
+                Margin="50,0,0,0"
+                FontFamily="Strande2"
+                FontSize="Medium"
+                HeightRequest="50"
+                Text="Star rating"
+                TextColor="White"
+                VerticalOptions="Center"
+                VerticalTextAlignment="Center" />
         </HorizontalStackLayout>
     </Shell.TitleView>
 
-    <VerticalStackLayout Spacing="20"
-                         Margin="0,30,0,50">
-        <Border StrokeThickness="0"
-                WidthRequest="300"
-                HeightRequest="50"
-                Margin="0,30,0,0">
-            <components:StarRating x:Name="starRating"
-                                   VerticalOptions="Fill"
-                                   HorizontalOptions="Fill"
-                                   BackgroundColor="{StaticResource Gray950}"
-                                    />
-        </Border>
-        
-        <Border 
-                VerticalOptions="Center"
+    <VerticalStackLayout Margin="0,30,0,50" Spacing="20">
+        <Border
+            Margin="0,30,0,0"
+            HeightRequest="50"
+            StrokeThickness="0"
+            WidthRequest="300">
+            <components:StarRating
+                x:Name="starRating"
+                BackgroundColor="{StaticResource Gray950}"
                 HorizontalOptions="Fill"
-                HeightRequest="60"
-                WidthRequest="170"
-                Margin="70,40,70,0"
-                StrokeShape="RoundRectangle, 10"
-                BackgroundColor="#333">
+                VerticalOptions="Fill" />
+        </Border>
+
+        <Border
+            Margin="70,40,70,0"
+            BackgroundColor="#333"
+            HeightRequest="60"
+            HorizontalOptions="Fill"
+            StrokeShape="RoundRectangle, 10"
+            VerticalOptions="Center"
+            WidthRequest="170">
             <Grid ColumnDefinitions="*,*,*">
-                <Label Text="Rate"
-                       VerticalOptions="Center"
-                       HorizontalOptions="Center"
-                       FontAttributes="Bold"
-                       FontSize="18"
-                       Margin="5,0,5,0" />
-                <Entry Grid.Column="1"
-                       TextColor="White"
-                       TextChanged="InputView_OnTextChanged"
-                       VerticalOptions="Center"
-                       HorizontalOptions="Fill"
-                       Keyboard="Numeric"
-                       Margin="5,0,5,0"/>
-                <Label Grid.Column="2"
-                       Text="/10"
-                       VerticalOptions="Center"
-                       HorizontalOptions="Center"
-                       FontAttributes="Bold"
-                       Margin="0,0,5,0"
-                       FontSize="18" />
+                <Label
+                    Margin="5,0,5,0"
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    HorizontalOptions="Center"
+                    Text="Rate"
+                    VerticalOptions="Center" />
+                <Entry
+                    Grid.Column="1"
+                    Margin="5,0,5,0"
+                    HorizontalOptions="Fill"
+                    Keyboard="Numeric"
+                    TextChanged="InputView_OnTextChanged"
+                    TextColor="White"
+                    VerticalOptions="Center" />
+                <Label
+                    Grid.Column="2"
+                    Margin="0,0,5,0"
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    HorizontalOptions="Center"
+                    Text="/10"
+                    VerticalOptions="Center" />
             </Grid>
         </Border>
-        <HorizontalStackLayout HorizontalOptions="Center"
-                               Spacing="10">
+        <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
 
-            <Border Grid.Row="1"
-                    Grid.Column="1"
-                    VerticalOptions="Center"
-                    HorizontalOptions="Center"
-                    HeightRequest="60"
-                    WidthRequest="170"
-                    StrokeShape="RoundRectangle, 10"
-                    BackgroundColor="#333">
+            <Border
+                Grid.Row="1"
+                Grid.Column="1"
+                BackgroundColor="#333"
+                HeightRequest="60"
+                HorizontalOptions="Center"
+                StrokeShape="RoundRectangle, 10"
+                VerticalOptions="Center"
+                WidthRequest="170">
                 <Grid ColumnDefinitions="*,*,0.5*">
-                    <Label Text="Speed"
-                           VerticalOptions="Center"
-                           HorizontalOptions="Center"
-                           FontAttributes="Bold"
-                           FontSize="18"
-                           Margin="2,0,0,0" />
-                    <Entry Grid.Column="1"
-                           TextColor="White"
-                           VerticalOptions="Center"
-                           HorizontalOptions="Fill"
-                           TextChanged="TxtSpeed_OnTextChanged"
-                           Keyboard="Numeric" />
-                    <Label Grid.Column="2"
-                           Text="ms"
-                           VerticalOptions="Center"
-                           HorizontalOptions="Center"
-                           FontAttributes="Bold"
-                           Margin="0,0,5,0"
-                           FontSize="18" />
+                    <Label
+                        Margin="2,0,0,0"
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        HorizontalOptions="Center"
+                        Text="Speed"
+                        VerticalOptions="Center" />
+                    <Entry
+                        Grid.Column="1"
+                        HorizontalOptions="Fill"
+                        Keyboard="Numeric"
+                        TextChanged="TxtSpeed_OnTextChanged"
+                        TextColor="White"
+                        VerticalOptions="Center" />
+                    <Label
+                        Grid.Column="2"
+                        Margin="0,0,5,0"
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        HorizontalOptions="Center"
+                        Text="ms"
+                        VerticalOptions="Center" />
                 </Grid>
             </Border>
         </HorizontalStackLayout>
-        <HorizontalStackLayout HorizontalOptions="Center"
-                               Spacing="10">
-            <Border Grid.Row="1"
-                    Grid.Column="0"
-                    VerticalOptions="Center"
-                    HorizontalOptions="Center"
-                    HeightRequest="60"
-                    WidthRequest="170"
-                    StrokeShape="RoundRectangle, 10"
-                    BackgroundColor="#333">
+        <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+            <Border
+                Grid.Row="1"
+                Grid.Column="0"
+                BackgroundColor="#333"
+                HeightRequest="60"
+                HorizontalOptions="Center"
+                StrokeShape="RoundRectangle, 10"
+                VerticalOptions="Center"
+                WidthRequest="170">
                 <Grid ColumnDefinitions="*,0.2*,*">
-                    <Label Text="Stars Color"
-                           VerticalOptions="Center"
-                           HorizontalOptions="Center"
-                           FontAttributes="Bold"
-                           FontSize="18"
-                           Margin="5,0,0,0" />
-                    <Label Grid.Column="1"
-                           Text="#"
-                           VerticalOptions="Center"
-                           HorizontalOptions="Center"
-                           FontAttributes="Bold"
-                           Margin="0,0,5,0"
-                           FontSize="18" />
-                    <Entry x:Name="txtStarsColor"
-                           Grid.Column="2"
-                           TextColor="White"
-                           VerticalOptions="Center"
-                           HorizontalOptions="Fill"
-                           TextChanged="StarColor_TextChange" />
+                    <Label
+                        Margin="5,0,0,0"
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        HorizontalOptions="Center"
+                        Text="Stars Color"
+                        VerticalOptions="Center" />
+                    <Label
+                        Grid.Column="1"
+                        Margin="0,0,5,0"
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        HorizontalOptions="Center"
+                        Text="#"
+                        VerticalOptions="Center" />
+                    <Entry
+                        x:Name="txtStarsColor"
+                        Grid.Column="2"
+                        HorizontalOptions="Fill"
+                        TextChanged="StarColor_TextChange"
+                        TextColor="White"
+                        VerticalOptions="Center" />
                 </Grid>
             </Border>
         </HorizontalStackLayout>

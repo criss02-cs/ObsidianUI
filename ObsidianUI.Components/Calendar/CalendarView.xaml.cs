@@ -7,7 +7,9 @@ public partial class CalendarView : ContentView
 
     #region Properties
 
+    public DateTime ShownDate { get; set; } = DateTime.Today;
     public CultureInfo Culture { get; set; } = new("en-US");
+    public Color OtherMonthDayTextColor { get; set; } = Colors.Gray;
 
     #endregion
     public CalendarView()
@@ -41,27 +43,35 @@ public partial class CalendarView : ContentView
         var daysOfMonth = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
         var firstDayOfMonth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
         for (var day = 1; day <= daysOfMonth; day++)
-        {
+        { 
             var dayDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, day);
             var column = (int) dayDateTime.DayOfWeek;
             var row = (int) Math.Ceiling((double)(dayDateTime.Day + (int)firstDayOfMonth.DayOfWeek) / 7);
-            Month.Add(GetDay(day), column, row - 1);
+            Month.Add(GetDay(dayDateTime), column, row - 1);
         }
         // mi prendo i giorni dei mesi precedenti e successivi
         var previousLastDay = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month - 1);
-        var lastDay = new DateTime(DateTime.Now.Year, DateTime.Now.Month - 1, previousLastDay);
         // Ottieni il primo giorno della settimana per la cultura specificata
         var firstDayOfWeek = Culture.DateTimeFormat.FirstDayOfWeek;
-        var numberOfDayToAdd = Math.Abs((int)lastDay.DayOfWeek - (int)firstDayOfWeek);
-        for (var i = 0; i <= numberOfDayToAdd; i++)
+        var numberOfDayToAdd = Math.Abs((int)firstDayOfMonth.DayOfWeek - (int)firstDayOfWeek);
+        for (var i = 1; i <= numberOfDayToAdd; i++)
         {
             var dayDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month - 1, previousLastDay);
             var column = (int)dayDateTime.DayOfWeek;
             //var row = (int)Math.Ceiling((double)(dayDateTime.Day + (int)firstDayOfMonth.DayOfWeek) / 7);
-            Month.Add(GetDay(previousLastDay), column, 0);
+            Month.Add(GetDay(dayDateTime), column, 0);
             previousLastDay -= 1;
         }
 
+        var lastDay = new DateTime(DateTime.Now.Year, DateTime.Now.Month, daysOfMonth);
+        numberOfDayToAdd = 7 - (int) lastDay.DayOfWeek;
+        for (var i = 1; i < numberOfDayToAdd; i++)
+        {
+            lastDay = lastDay.AddDays(1);
+            var column = (int)lastDay.DayOfWeek;
+            Month.Add(GetDay(lastDay), column, 4);
+        }
+        
         for (var i = 0; i < 7; i++)
         {
            var giorno = Culture.DateTimeFormat.DayNames[((int)firstDayOfWeek + i) % 7];
@@ -70,7 +80,7 @@ public partial class CalendarView : ContentView
         }
     }
 
-    private StackLayout GetDay(int day)
+    private StackLayout GetDay(DateTime day)
     {
         return new StackLayout
         {
@@ -78,11 +88,10 @@ public partial class CalendarView : ContentView
             {
                 new Label
                 {
-                    Text = day.ToString(),
-                    TextColor = day == DateTime.Now.Day ? Colors.Green : Colors.White
+                    Text = day.Day.ToString(),
+                    TextColor = day == DateTime.Today ? Colors.Green : day.Month != DateTime.Today.Month ? Colors.Gray : Colors.White
                 }
-            },
-            BackgroundColor = Colors.Red
+            }
         };
     }
 }
