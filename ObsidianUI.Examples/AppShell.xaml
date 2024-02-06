@@ -47,7 +47,17 @@
                       ContentTemplate="{DataTemplate views:LifeCyclePage}"
                       Route="LifeCyclePage" />
     </FlyoutItem>
+    <FlyoutItem Title="Calendar">
+        <FlyoutItem.Icon>
+            <FontImageSource FontFamily="FASolid"
+                             Glyph="{x:Static fa:Solid.Calendar}"
+                             Color="White" />
+        </FlyoutItem.Icon>
+        <ShellContent Title="CalendarPage"
+                      ContentTemplate="{DataTemplate views:CalendarPage}"
+                      Route="CalendarPage" />
+    </FlyoutItem>
 
-    
+
 
 </Shell>
