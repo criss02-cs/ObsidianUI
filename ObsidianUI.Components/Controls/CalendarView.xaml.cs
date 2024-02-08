@@ -4,26 +4,55 @@ namespace ObsidianUI.Components.Controls;
 
 public partial class CalendarView : ContentView
 {
-    private int _weeksInAMonth = 6;
-    private int _daysInAWeek = 7;
+    private readonly int _weeksInAMonth = 6;
+    private readonly int _daysInAWeek = 7;
     #region BindableProperties
 
-    public readonly BindableProperty CultureProperty =
+    public static readonly BindableProperty CultureProperty =
         BindableProperty.Create(nameof(Culture), typeof(CultureInfo), typeof(CalendarView), new CultureInfo("en-US"),
             propertyChanged: CulturePropertyChanged);
+    public static readonly BindableProperty ShownDateProperty = 
+        BindableProperty.Create(nameof(ShownDate), typeof(DateTime), typeof(CalendarView), DateTime.Today,
+            propertyChanged: ShownDatePropertyChanged);
+
+    public static readonly BindableProperty OtherMonthDayTextColorProperty =
+        BindableProperty.Create(nameof(OtherMonthDayTextColor), typeof(Color), typeof(CalendarView), Colors.Gray);
 
     #endregion
     
     #region Properties
 
-    public DateTime ShownDate { get; set; } = DateTime.Today;
-    public CultureInfo Culture { get => (CultureInfo)GetValue(CultureProperty); set => SetValue(CultureProperty, value); }
-    public Color OtherMonthDayTextColor { get; set; } = Colors.Gray;
+    public DateTime ShownDate
+    {
+        get => (DateTime)GetValue(ShownDateProperty);
+        set => SetValue(ShownDateProperty, value);
+    }
+
+    public CultureInfo Culture
+    {
+        get => (CultureInfo)GetValue(CultureProperty);
+        set => SetValue(CultureProperty, value);
+    }
+
+    public Color OtherMonthDayTextColor
+    {
+        get => (Color)GetValue(OtherMonthDayTextColorProperty);
+        set => SetValue(OtherMonthDayTextColorProperty, value);
+    }
 
     #endregion
 
     #region PropertiesChangedEvents
 
+    private static void ShownDatePropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
+    {
+        if (bindable is not CalendarView control) return;
+        if (oldvalue is not DateTime old || newvalue is not DateTime newDate) return;
+        if (old.Month == newDate.Month && old.Year == newDate.Year) return;
+        control.Month.Clear();
+        control.Header.Clear();
+        control.PopulateGrid();
+    }
     private static void CulturePropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
     {
         if (bindable is not CalendarView control) return;
