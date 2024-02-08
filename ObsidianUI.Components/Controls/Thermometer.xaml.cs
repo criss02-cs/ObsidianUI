@@ -1,43 +1,43 @@
 
-namespace ObsidianUI.Components.Termometro;
+namespace ObsidianUI.Components.Controls;
 
-public partial class Termometro : ContentView
+public partial class Thermometer : ContentView
 {
     public static BindableProperty TemperaturaProperty =
-        BindableProperty.Create(nameof(Temperatura), typeof(double), typeof(Termometro), 0.0,
+        BindableProperty.Create(nameof(Temperatura), typeof(double), typeof(Thermometer), 0.0,
             propertyChanged: TemperaturaPropertyChanged);
 
     public static BindableProperty MaxValueProperty =
-        BindableProperty.Create(nameof(MaxValue), typeof(double), typeof(Termometro), 0.0,
+        BindableProperty.Create(nameof(MaxValue), typeof(double), typeof(Thermometer), 0.0,
             propertyChanged: MaxValuePropertyChanged);
 
     public static BindableProperty SpeedProperty =
-        BindableProperty.Create(nameof(Speed), typeof(int), typeof(Termometro), 0);
+        BindableProperty.Create(nameof(Speed), typeof(int), typeof(Thermometer), 0);
 
     public static BindableProperty BorderColorProperty =
-        BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(Termometro), Color.FromRgba("#333"),
+        BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(Thermometer), Color.FromRgba("#333"),
             propertyChanged: BorderColorPropertyChanged);
 
     public static BindableProperty TemperaturaColorProperty =
-        BindableProperty.Create(nameof(TemperaturaColor), typeof(Color), typeof(Termometro), Colors.Red,
+        BindableProperty.Create(nameof(TemperaturaColor), typeof(Color), typeof(Thermometer), Colors.Red,
             propertyChanged: BorderColorPropertyChanged);
 
     private static void BorderColorPropertyChanged(BindableObject bindable, object oldValue, object newValue)
     {
-        if (bindable is not Termometro control) return;
+        if (bindable is not Thermometer control) return;
     }
 
     private static void MaxValuePropertyChanged(BindableObject bindable, object oldValue, object newValue)
     {
-        if (bindable is not Termometro control) return;
+        if (bindable is not Thermometer control) return;
         control.Animate();
     }
 
     private static void TemperaturaPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
     {
-        if (bindable is not Termometro control) return;
+        if (bindable is not Thermometer control) return;
         var temperatura = Convert.ToDouble(newvalue);
-        control.label.Text = $"{temperatura}°C";
+        control.label.Text = $"{temperatura}ï¿½C";
         control.Animate();
     }
 
@@ -46,7 +46,7 @@ public partial class Termometro : ContentView
     public int Speed { get => (int)GetValue(SpeedProperty); set => SetValue(SpeedProperty, value); }
     public Color BorderColor { get => (Color)GetValue(BorderColorProperty); set => SetValue(BorderColorProperty, value); }
     public Color TemperaturaColor { get => (Color)GetValue(TemperaturaColorProperty); set => SetValue(TemperaturaColorProperty, value); }
-    public Termometro()
+    public Thermometer()
     {
         InitializeComponent();
         Animate();

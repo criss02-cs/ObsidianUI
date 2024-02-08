@@ -24,14 +24,20 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="RgbColorPicker\RgbColorPicker.xaml">
+	  <MauiXaml Update="Controls\RgbColorPicker.xaml">
+	    <SubType>Designer</SubType>
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="StarRating\StarRating.xaml">
+	  <MauiXaml Update="Controls\StarRating.xaml">
+	    <SubType>Designer</SubType>
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Termometro\Termometro.xaml">
+	  <MauiXaml Update="Controls\Thermometer.xaml">
+	    <SubType>Designer</SubType>
 	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Controls\CalendarView.xaml">
+	    <SubType>Designer</SubType>
 	  </MauiXaml>
 	</ItemGroup>
 
@@ -39,6 +45,29 @@
 	  <None Update="Calendar\CalendarView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Controls\RgbColorPicker.xaml.cs">
+	    <DependentUpon>RgbColorPicker.xaml</DependentUpon>
+	    <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Update="Controls\StarRating.xaml.cs">
+	    <DependentUpon>StarRating.xaml</DependentUpon>
+	    <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Update="Controls\Thermometer.xaml.cs">
+	    <DependentUpon>Termometro.xaml</DependentUpon>
+	    <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Update="Controls\CalendarView.xaml.cs">
+	    <DependentUpon>CalendarView.xaml</DependentUpon>
+	    <SubType>Code</SubType>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Utils\" />
 	</ItemGroup>
 
 </Project>

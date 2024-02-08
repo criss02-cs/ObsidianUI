@@ -1,5 +1,5 @@
 
-namespace ObsidianUI.Components.RgbColorPicker;
+namespace ObsidianUI.Components.Controls;
 
 public partial class RgbColorPicker : ContentView
 {

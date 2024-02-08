@@ -1,4 +1,4 @@
-namespace ObsidianUI.Components.StarRating;
+namespace ObsidianUI.Components.Controls;
 
 public partial class StarRating : ContentView
 {

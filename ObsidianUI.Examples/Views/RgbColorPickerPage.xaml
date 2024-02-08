@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:rgbColorPicker="clr-namespace:ObsidianUI.Components.RgbColorPicker;assembly=ObsidianUI.Components"
+             xmlns:controls="clr-namespace:ObsidianUI.Components.Controls;assembly=ObsidianUI.Components"
              x:Class="ObsidianUI.Examples.Views.RgbColorPickerPage"
              Title="RgbColorPickerPage">
     <Shell.TitleView>
@@ -16,5 +16,5 @@
                    FontSize="Medium" />
         </HorizontalStackLayout>
     </Shell.TitleView>
-    <rgbColorPicker:RgbColorPicker Rgb="(50,50,05)" />
+    <controls:RgbColorPicker Rgb="(50,50,05)" />
 </ContentPage>

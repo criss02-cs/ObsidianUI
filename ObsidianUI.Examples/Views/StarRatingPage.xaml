@@ -3,7 +3,7 @@
     x:Class="ObsidianUI.Examples.Views.StarRatingPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:components="clr-namespace:ObsidianUI.Components.StarRating;assembly=ObsidianUI.Components"
+    xmlns:controls="clr-namespace:ObsidianUI.Components.Controls;assembly=ObsidianUI.Components"
     x:Name="this"
     Title="StarRatingPage"
     BackgroundColor="{StaticResource Gray950}">
@@ -27,7 +27,7 @@
             HeightRequest="50"
             StrokeThickness="0"
             WidthRequest="300">
-            <components:StarRating
+            <controls:StarRating
                 x:Name="starRating"
                 BackgroundColor="{StaticResource Gray950}"
                 HorizontalOptions="Fill"

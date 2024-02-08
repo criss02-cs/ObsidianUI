@@ -31,7 +31,7 @@ namespace ObsidianUI.Examples
 
         private static MauiAppBuilder RegisterServices(this MauiAppBuilder builder)
         {
-            builder.Services.AddSingleton<TermometroPage>();
+            builder.Services.AddSingleton<ThermometerPage>();
             builder.Services.AddSingleton<TermometroPageViewModel>();
 
             builder.Services.AddSingleton<StarRatingPage>();

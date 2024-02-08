@@ -80,7 +80,7 @@
 	  <MauiXaml Update="Views\StarRatingPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\TermometroPage.xaml">
+	  <MauiXaml Update="Views\ThermometerPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

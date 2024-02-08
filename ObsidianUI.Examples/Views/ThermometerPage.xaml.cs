@@ -2,9 +2,9 @@ using ObsidianUI.Examples.ViewModels;
 
 namespace ObsidianUI.Examples.Views;
 
-public partial class TermometroPage : ContentPage
+public partial class ThermometerPage : ContentPage
 {
-	public TermometroPage(TermometroPageViewModel vm)
+	public ThermometerPage(TermometroPageViewModel vm)
 	{
 		InitializeComponent();
         txtTempColor.Text = "ff0000";

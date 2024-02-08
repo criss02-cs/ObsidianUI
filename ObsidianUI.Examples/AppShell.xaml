@@ -33,7 +33,7 @@
         </FlyoutItem.Icon>
         <ShellContent
             Title="Home"
-            ContentTemplate="{DataTemplate views:TermometroPage}"
+            ContentTemplate="{DataTemplate views:ThermometerPage}"
             Route="TermometroPage" />
     </FlyoutItem>
 
