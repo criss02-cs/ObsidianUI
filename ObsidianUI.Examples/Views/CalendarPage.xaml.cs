@@ -9,6 +9,6 @@ public partial class CalendarPage : ContentPage
 	{
 		InitializeComponent();
 		BindingContext = this;
-		// View.SetValue(View.CultureProperty, CultureP);
+		View.SetValue(View.CultureProperty, CultureP);
 	}
 }

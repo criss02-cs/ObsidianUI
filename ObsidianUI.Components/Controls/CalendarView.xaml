@@ -3,8 +3,5 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ObsidianUI.Components.Controls.CalendarView"
              SizeChanged="CalendarView_OnSizeChanged">
-    <StackLayout VerticalOptions="Fill" HorizontalOptions="Fill">
-        <Grid x:Name="Header" VerticalOptions="Fill" HorizontalOptions="Fill"/>
-        <Grid x:Name="Month" VerticalOptions="Fill" HorizontalOptions="Fill"/>
-    </StackLayout>
+    <CarouselView x:Name="CarouselView" />
 </ContentView>
