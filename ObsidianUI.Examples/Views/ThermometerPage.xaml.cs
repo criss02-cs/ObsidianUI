@@ -7,8 +7,8 @@ public partial class ThermometerPage : ContentPage
 	public ThermometerPage(TermometroPageViewModel vm)
 	{
 		InitializeComponent();
-        txtTempColor.Text = "ff0000";
-        txtBorderColor.Text = "333";
+        txtTempColor.Text = "240e32";
+        txtBorderColor.Text = "5b237e";
 		BindingContext = vm;
 	}
 
@@ -20,7 +20,7 @@ public partial class ThermometerPage : ContentPage
         }
         catch (Exception)
         {
-            termometro.TemperaturaColor = Color.FromArgb($"#ff0000");
+            termometro.TemperaturaColor = Color.FromArgb("#240e32");
         }
     }
 
@@ -32,7 +32,7 @@ public partial class ThermometerPage : ContentPage
         }
         catch (Exception)
 		{
-            termometro.BorderColor = Color.FromArgb($"#333");
+            termometro.BorderColor = Color.FromArgb("#5b237e");
         }
     }
 }

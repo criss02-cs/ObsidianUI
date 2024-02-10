@@ -9,6 +9,7 @@ public partial class StarRatingPage : ContentPage
 	{
 		InitializeComponent();
 		txtStarsColor.Text = "d5b23d";
+		txtSpeed.Text = "1500";
 	}
 
 	private void StarColor_TextChange(object? sender, TextChangedEventArgs e)

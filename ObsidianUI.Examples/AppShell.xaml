@@ -1,40 +1,53 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<Shell
-    x:Class="ObsidianUI.Examples.AppShell"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:views="clr-namespace:ObsidianUI.Examples.Views"
-    xmlns:fa="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
-    Title="ObsidianUI.Examples">
+<Shell x:Class="ObsidianUI.Examples.AppShell"
+       xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:views="clr-namespace:ObsidianUI.Examples.Views"
+       xmlns:fa="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
+       Title="ObsidianUI.Examples">
+
+    <FlyoutItem Title="Circular progress">
+        <FlyoutItem.Icon>
+            <FontImageSource FontFamily="FASolid"
+                             Glyph="{x:Static fa:Solid.CircleDot}"
+                             Color="White" />
+        </FlyoutItem.Icon>
+        <ShellContent Title="Circular progress"
+                      ContentTemplate="{DataTemplate views:CircularProgressPage}"
+                      Route="CircularProgressPage" />
+    </FlyoutItem>
 
     <FlyoutItem Title="Star Rating">
         <FlyoutItem.Icon>
-            <FontImageSource FontFamily="FASolid" Glyph="{x:Static fa:Solid.StarHalf}" Color="Gold" />
+            <FontImageSource FontFamily="FASolid"
+                             Glyph="{x:Static fa:Solid.StarHalf}"
+                             Color="White" />
         </FlyoutItem.Icon>
-        <ShellContent
-            Title="Star rating"
-            ContentTemplate="{DataTemplate views:StarRatingPage}"
-            Route="StarRatingPage" />
+        <ShellContent Title="Star rating"
+                      ContentTemplate="{DataTemplate views:StarRatingPage}"
+                      Route="StarRatingPage" />
     </FlyoutItem>
 
     <FlyoutItem Title="Color Picker">
         <FlyoutItem.Icon>
-            <FontImageSource FontFamily="FASolid" Glyph="{x:Static fa:Solid.Sliders}" Color="White" />
+            <FontImageSource FontFamily="FASolid"
+                             Glyph="{x:Static fa:Solid.Sliders}"
+                             Color="White" />
         </FlyoutItem.Icon>
-        <ShellContent
-            Title="Rgb Color Picker"
-            ContentTemplate="{DataTemplate views:RgbColorPickerPage}"
-            Route="RgbColorPickerPage" />
+        <ShellContent Title="Rgb Color Picker"
+                      ContentTemplate="{DataTemplate views:RgbColorPickerPage}"
+                      Route="RgbColorPickerPage" />
     </FlyoutItem>
 
     <FlyoutItem Title="Termometro">
         <FlyoutItem.Icon>
-            <FontImageSource FontFamily="FASolid" Glyph="{x:Static fa:Solid.TemperatureHalf}" Color="White" />
+            <FontImageSource FontFamily="FASolid"
+                             Glyph="{x:Static fa:Solid.TemperatureHalf}"
+                             Color="White" />
         </FlyoutItem.Icon>
-        <ShellContent
-            Title="Home"
-            ContentTemplate="{DataTemplate views:ThermometerPage}"
-            Route="TermometroPage" />
+        <ShellContent Title="Home"
+                      ContentTemplate="{DataTemplate views:ThermometerPage}"
+                      Route="TermometroPage" />
     </FlyoutItem>
 
     <FlyoutItem Title="LifeCyclePage">
@@ -57,7 +70,5 @@
                       ContentTemplate="{DataTemplate views:CalendarPage}"
                       Route="CalendarPage" />
     </FlyoutItem>
-
-
 
 </Shell>

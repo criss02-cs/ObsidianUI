@@ -1,34 +1,39 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage x:Class="ObsidianUI.Examples.Views.StarRatingPage"
-             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:ObsidianUI.Components.Controls;assembly=ObsidianUI.Components"
+             xmlns:viewmodels="clr-namespace:ObsidianUI.Examples.ViewModels;assembly=ObsidianUI.Examples"
+             x:Class="ObsidianUI.Examples.Views.CircularProgressPage"
              x:Name="this"
-             Title="StarRatingPage"
+             Title="CircularProgressPage"
              BackgroundColor="{StaticResource Gray950}">
+
     <Shell.TitleView>
         <HorizontalStackLayout VerticalOptions="Fill">
             <Label Margin="50,0,0,0"
                    FontFamily="Strande2"
                    FontSize="Medium"
                    HeightRequest="50"
-                   Text="Star rating"
+                   Text="Circular progress"
                    TextColor="White"
                    VerticalOptions="Center"
                    VerticalTextAlignment="Center" />
         </HorizontalStackLayout>
     </Shell.TitleView>
 
+    <ContentPage.BindingContext>
+        <viewmodels:CircularProgressPageViewModel />
+    </ContentPage.BindingContext>
+
     <VerticalStackLayout Margin="0,30,0,50"
                          Spacing="20">
         <Border Margin="0,30,0,0"
-                HeightRequest="50"
+                HeightRequest="200"
                 StrokeThickness="0"
-                WidthRequest="300">
-            <controls:StarRating x:Name="starRating"
-                                 BackgroundColor="{StaticResource Gray950}"
-                                 HorizontalOptions="Fill"
-                                 VerticalOptions="Fill" />
+                WidthRequest="200">
+            <controls:CircularProgress x:Name="CircularProgress"
+                                       HorizontalOptions="Fill"
+                                       VerticalOptions="Fill"/>
         </Border>
 
         <Border Margin="70,40,70,0"
@@ -37,36 +42,51 @@
                 HorizontalOptions="Fill"
                 StrokeShape="RoundRectangle, 10"
                 VerticalOptions="Center"
-                WidthRequest="170">
-            <Grid ColumnDefinitions="*,*,*">
+                WidthRequest="200">
+            <Grid ColumnDefinitions="100,*,*">
                 <Label Margin="5,0,5,0"
                        FontAttributes="Bold"
                        FontSize="18"
                        HorizontalOptions="Center"
-                       Text="Rate"
+                       Text="Value"
                        VerticalOptions="Center" />
                 <Entry Grid.Column="1"
                        Margin="5,0,5,0"
                        HorizontalOptions="Fill"
                        Keyboard="Numeric"
-                       TextChanged="InputView_OnTextChanged"
+                       Text="{Binding Value}"
                        TextColor="White"
                        VerticalOptions="Center" />
-                <Label Grid.Column="2"
-                       Margin="0,0,5,0"
+            </Grid>
+        </Border>
+
+        <Border Margin="70,40,70,0"
+                BackgroundColor="#333"
+                HeightRequest="60"
+                HorizontalOptions="Fill"
+                StrokeShape="RoundRectangle, 10"
+                VerticalOptions="Center"
+                WidthRequest="200">
+            <Grid ColumnDefinitions="100,*,*">
+                <Label Margin="5,0,5,0"
                        FontAttributes="Bold"
                        FontSize="18"
                        HorizontalOptions="Center"
-                       Text="/10"
+                       Text="Max value"
                        VerticalOptions="Center" />
+                <Entry Grid.Column="1"
+                       Margin="5,0,5,0"
+                       HorizontalOptions="Fill"
+                       Keyboard="Numeric"
+                       Text="{Binding MaxValue}"
+                       TextColor="White"
+                       VerticalOptions="Center"/>
             </Grid>
         </Border>
         <HorizontalStackLayout HorizontalOptions="Center"
                                Spacing="10">
 
-            <Border Grid.Row="1"
-                    Grid.Column="1"
-                    BackgroundColor="#333"
+            <Border BackgroundColor="#333"
                     HeightRequest="60"
                     HorizontalOptions="Center"
                     StrokeShape="RoundRectangle, 10"
@@ -79,11 +99,10 @@
                            HorizontalOptions="Center"
                            Text="Speed"
                            VerticalOptions="Center" />
-                    <Entry x:Name="txtSpeed"
-                           Grid.Column="1"
+                    <Entry Grid.Column="1"
                            HorizontalOptions="Fill"
                            Keyboard="Numeric"
-                           TextChanged="TxtSpeed_OnTextChanged"
+                           Text="{Binding Speed}"
                            TextColor="White"
                            VerticalOptions="Center" />
                     <Label Grid.Column="2"
@@ -103,13 +122,13 @@
                     HorizontalOptions="Center"
                     StrokeShape="RoundRectangle, 10"
                     VerticalOptions="Center"
-                    WidthRequest="170">
+                    WidthRequest="200">
                 <Grid ColumnDefinitions="*,0.2*,*">
                     <Label Margin="5,0,0,0"
                            FontAttributes="Bold"
                            FontSize="18"
                            HorizontalOptions="Center"
-                           Text="Stars Color"
+                           Text="progress Color"
                            VerticalOptions="Center" />
                     <Label Grid.Column="1"
                            Margin="0,0,5,0"
@@ -118,14 +137,44 @@
                            HorizontalOptions="Center"
                            Text="#"
                            VerticalOptions="Center" />
-                    <Entry x:Name="txtStarsColor"
+                    <Entry x:Name="txtProgressColor"
                            Grid.Column="2"
                            HorizontalOptions="Fill"
-                           TextChanged="StarColor_TextChange"
                            TextColor="White"
+                           TextChanged="TxtProgressColor_OnTextChanged"
                            VerticalOptions="Center" />
                 </Grid>
             </Border>
+
+            <Border BackgroundColor="#333"
+                    HeightRequest="60"
+                    HorizontalOptions="Center"
+                    StrokeShape="RoundRectangle, 10"
+                    VerticalOptions="Center"
+                    WidthRequest="200">
+                <Grid ColumnDefinitions="*,0.2*,*">
+                    <Label Margin="5,0,0,0"
+                           FontAttributes="Bold"
+                           FontSize="18"
+                           HorizontalOptions="Center"
+                           Text="progress Color"
+                           VerticalOptions="Center" />
+                    <Label Grid.Column="1"
+                           Margin="0,0,5,0"
+                           FontAttributes="Bold"
+                           FontSize="18"
+                           HorizontalOptions="Center"
+                           Text="#"
+                           VerticalOptions="Center" />
+                    <Entry x:Name="txtIncaveColor"
+                           Grid.Column="2"
+                           HorizontalOptions="Fill"
+                           TextColor="White"
+                           TextChanged="TxtIncaveColor_OnTextChanged"
+                           VerticalOptions="Center" />
+                </Grid>
+            </Border>
+
         </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>
