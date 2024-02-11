@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:obsComponents="http://schemas.enisn-projects.io/dotnet/maui/obsidianui/components"
-             x:Class="ObsidianUI.Examples.Views.CalendarPage"
-             Title="CalendarPage"
-             x:Name="Calendar">
+<views:BaseComponentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                   xmlns:obsComponents="http://schemas.enisn-projects.io/dotnet/maui/obsidianui/components"
+                   xmlns:views="using:ObsidianUI.Examples.Views"
+                   x:Class="ObsidianUI.Examples.Views.CalendarPage"
+                   Title="CalendarPage"
+                   x:Name="Calendar">
     <obsComponents:CalendarView x:Name="View"/>
-</ContentPage>
+</views:BaseComponentPage>

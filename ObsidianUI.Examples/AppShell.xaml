@@ -4,7 +4,47 @@
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:views="clr-namespace:ObsidianUI.Examples.Views"
        xmlns:fa="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
-       Title="ObsidianUI.Examples">
+       Title="ObsidianUI.Examples"
+       FlyoutWidth="220"
+       FlyoutBehavior="Flyout"
+       FlowDirection="LeftToRight">
+
+    <Shell.BackgroundColor>
+        #120c2f
+    </Shell.BackgroundColor>
+
+    <Shell.FlyoutHeader>
+        <Grid>
+            <Image Source="obsidianui.png"
+                   HeightRequest="140"
+                   Aspect="AspectFit" 
+                   Margin="20,20,20,50"/>
+            <Label Text="OBSIDIAN UI"
+                   HorizontalOptions="Center"
+                   VerticalOptions="End"
+                   Margin="0,0,0,15"
+                   FontSize="20"
+                   FontAttributes="Bold" />
+        </Grid>
+    </Shell.FlyoutHeader>
+
+    <Shell.FlyoutBackground>
+        <LinearGradientBrush EndPoint="1,0">
+            <GradientStop Color="#120c2f"
+                          Offset="0.1" />
+            <GradientStop Color="Black"
+                          Offset="1" />
+        </LinearGradientBrush>
+    </Shell.FlyoutBackground>
+
+    <FlyoutItem Title="Welcome" >
+        <ShellContent Title=""
+                      ContentTemplate="{DataTemplate views:WelcomePage}"
+                      Route="WelcomePage"></ShellContent>
+    </FlyoutItem>
+
+
+
 
     <FlyoutItem Title="Circular progress">
         <FlyoutItem.Icon>

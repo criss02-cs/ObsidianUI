@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ObsidianUI.Components.Controls.StarRating"
              x:Name="this"
-             BindingContext="{x:Reference this}">
+             BindingContext="{x:Reference this}"
+             BackgroundColor="Transparent">
     <Grid ColumnDefinitions="*,*,*,*,*,*,*,*,*,*" ColumnSpacing="-2">
         <Border Grid.Column="0"
                 x:Name="s1a"

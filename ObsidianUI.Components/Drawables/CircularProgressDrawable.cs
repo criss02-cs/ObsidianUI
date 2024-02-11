@@ -17,12 +17,12 @@ internal class CircularProgressDrawable(CircularProgress cp) : IDrawable
         var halfStrokeWith = strokeWith / 2;
         canvas.FillColor = cp.IncaveColor;
         canvas.StrokeSize = strokeWith;
-        //canvas.DrawEllipse(
-        //    rect.X + halfStrokeWith, rect.Y + halfStrokeWith, rect.Width - strokeWith, rect.Height - strokeWith);
+        canvas.DrawEllipse(
+            rect.X + halfStrokeWith, rect.Y + halfStrokeWith, rect.Width - strokeWith, rect.Height - strokeWith);
 
         strokeWith = cp.ProgressThickness;
-        canvas.FillColor = Colors.Gold;// cp.ProgressColor;
-        canvas.StrokeColor = Colors.Gold;// cp.ProgressColor;
+        canvas.FillColor = cp.ProgressColor;// cp.ProgressColor;
+        canvas.StrokeColor = cp.ProgressColor;// cp.ProgressColor;
         canvas.StrokeSize = strokeWith;
         canvas.Rotate(cp.Speed, rect.Width / 2, rect.Height / 2);
         canvas.StrokeLineCap = LineCap.Round;

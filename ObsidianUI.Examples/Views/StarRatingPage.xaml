@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage x:Class="ObsidianUI.Examples.Views.StarRatingPage"
-             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:controls="clr-namespace:ObsidianUI.Components.Controls;assembly=ObsidianUI.Components"
-             x:Name="this"
-             Title="StarRatingPage"
-             BackgroundColor="{StaticResource Gray950}">
+<views:BaseComponentPage x:Class="ObsidianUI.Examples.Views.StarRatingPage"
+                   xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                   xmlns:controls="clr-namespace:ObsidianUI.Components.Controls;assembly=ObsidianUI.Components"
+                   xmlns:views="using:ObsidianUI.Examples.Views"
+                   x:Name="this"
+                   Title="StarRatingPage"
+                   BackgroundColor="{StaticResource Gray950}">
     <Shell.TitleView>
-        <HorizontalStackLayout VerticalOptions="Fill">
-            <Label Margin="50,0,0,0"
-                   FontFamily="Strande2"
-                   FontSize="Medium"
-                   HeightRequest="50"
-                   Text="Star rating"
-                   TextColor="White"
-                   VerticalOptions="Center"
-                   VerticalTextAlignment="Center" />
-        </HorizontalStackLayout>
+        <Label FontFamily="Strande2"
+               FontSize="Medium"
+               Text="Star rating"
+               TextColor="White"
+               VerticalOptions="Center"
+               HorizontalOptions="Center" />
     </Shell.TitleView>
 
     <VerticalStackLayout Margin="0,30,0,50"
@@ -26,7 +23,6 @@
                 StrokeThickness="0"
                 WidthRequest="300">
             <controls:StarRating x:Name="starRating"
-                                 BackgroundColor="{StaticResource Gray950}"
                                  HorizontalOptions="Fill"
                                  VerticalOptions="Fill" />
         </Border>
@@ -45,7 +41,7 @@
                        HorizontalOptions="Center"
                        Text="Rate"
                        VerticalOptions="Center" />
-                <Entry Grid.Column="1"
+                <Entry x:Name="txtRate" Grid.Column="1"
                        Margin="5,0,5,0"
                        HorizontalOptions="Fill"
                        Keyboard="Numeric"
@@ -128,4 +124,4 @@
             </Border>
         </HorizontalStackLayout>
     </VerticalStackLayout>
-</ContentPage>
+</views:BaseComponentPage>

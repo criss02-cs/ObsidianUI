@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:controls="clr-namespace:ObsidianUI.Components.Controls;assembly=ObsidianUI.Components"
-             x:Class="ObsidianUI.Examples.Views.ThermometerPage"
-             xmlns:viewmodels="clr-namespace:ObsidianUI.Examples.ViewModels"
-             Title="TermometroPage">
+<views:BaseComponentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                   xmlns:controls="clr-namespace:ObsidianUI.Components.Controls;assembly=ObsidianUI.Components"
+                   x:Class="ObsidianUI.Examples.Views.ThermometerPage"
+                   xmlns:viewmodels="clr-namespace:ObsidianUI.Examples.ViewModels"
+                   xmlns:views="using:ObsidianUI.Examples.Views"
+                   Title="TermometroPage">
     <Shell.TitleView>
         <HorizontalStackLayout VerticalOptions="Fill">
             <Label Text="Termometro"
@@ -187,4 +188,4 @@
             </Border>
         </HorizontalStackLayout>
     </VerticalStackLayout>
-</ContentPage>
+</views:BaseComponentPage>

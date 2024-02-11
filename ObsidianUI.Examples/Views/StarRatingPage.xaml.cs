@@ -3,13 +3,14 @@ using ObsidianUI.Examples.ViewModels;
 
 namespace ObsidianUI.Examples.Views;
 
-public partial class StarRatingPage : ContentPage
+public partial class StarRatingPage
 {
 	public StarRatingPage()
 	{
 		InitializeComponent();
 		txtStarsColor.Text = "d5b23d";
-		txtSpeed.Text = "1500";
+		txtSpeed.Text = "600";
+		txtRate.Text = "5";
 	}
 
 	private void StarColor_TextChange(object? sender, TextChangedEventArgs e)

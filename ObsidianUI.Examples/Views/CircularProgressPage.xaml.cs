@@ -7,8 +7,8 @@ public partial class CircularProgressPage
 	public CircularProgressPage(CircularProgressPageViewModel vm)
 	{
 		InitializeComponent();
-		txtProgressColor.Text = "240e32";
-		txtIncaveColor.Text = "5b237e";
+		txtProgressColor.Text = "5b237e";
+		txtIncaveColor.Text = "000000";
 
 		BindingContext = vm;
 
@@ -24,7 +24,7 @@ public partial class CircularProgressPage
 		}
 		catch (Exception)
 		{
-			CircularProgress.ProgressColor = Color.FromArgb("#240e32");
+			CircularProgress.ProgressColor = Color.FromArgb("#5b237e");
 		}
 	}
 
@@ -36,7 +36,7 @@ public partial class CircularProgressPage
 		}
 		catch (Exception)
 		{
-			CircularProgress.ProgressColor = Color.FromArgb("#5b237e");
+			CircularProgress.ProgressColor = Color.FromArgb("#000000");
 		}
 	}
 }
