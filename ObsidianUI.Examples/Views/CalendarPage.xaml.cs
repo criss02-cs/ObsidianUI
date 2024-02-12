@@ -2,7 +2,7 @@ using System.Globalization;
 
 namespace ObsidianUI.Examples.Views;
 
-public partial class CalendarPage : ContentPage
+public partial class CalendarPage
 {
 	public CultureInfo CultureP { get; set; } = new CultureInfo("it-IT");
 	public CalendarPage()

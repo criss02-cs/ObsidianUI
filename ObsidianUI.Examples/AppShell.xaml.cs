@@ -1,10 +1,9 @@
-﻿namespace ObsidianUI.Examples
+﻿namespace ObsidianUI.Examples;
+
+public partial class AppShell : Shell
 {
-    public partial class AppShell : Shell
+    public AppShell()
     {
-        public AppShell()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

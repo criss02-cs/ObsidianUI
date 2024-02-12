@@ -19,14 +19,20 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <AndroidResource Remove="Utils\**" />
+	  <Compile Remove="Utils\**" />
+	  <EmbeddedResource Remove="Utils\**" />
+	  <MauiCss Remove="Utils\**" />
+	  <MauiXaml Remove="Utils\**" />
+	  <None Remove="Utils\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.6" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.6" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Controls\MonthView.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="Controls\RgbColorPicker.xaml">
 	    <SubType>Designer</SubType>
 	    <Generator>MSBuild:Compile</Generator>
@@ -51,6 +57,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Controls\CircularProgress.xaml.cs">
+	    <DependentUpon>CircularProgress.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Controls\RgbColorPicker.xaml.cs">
 	    <DependentUpon>RgbColorPicker.xaml</DependentUpon>
 	    <SubType>Code</SubType>

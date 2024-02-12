@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<views:BaseComponentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                         xmlns:controls="clr-namespace:ObsidianUI.Components.Controls;assembly=ObsidianUI.Components"
+                         xmlns:viewmodels="clr-namespace:ObsidianUI.Examples.ViewModels;assembly=ObsidianUI.Examples"
+                         xmlns:views="using:ObsidianUI.Examples.Views"
+                         x:Class="ObsidianUI.Examples.Views.CircularProgressPage"
+                         x:Name="this"
+                         Title="CircularProgressPage">
+
+    <Shell.TitleView>
+        <HorizontalStackLayout VerticalOptions="Fill">
+            <Label Margin="50,0,0,0"
+                   FontFamily="Strande2"
+                   FontSize="Medium"
+                   HeightRequest="50"
+                   Text="Circular progress"
+                   TextColor="White"
+                   VerticalOptions="Center"
+                   VerticalTextAlignment="Center" />
+        </HorizontalStackLayout>
+    </Shell.TitleView>
+
+    <ContentPage.BindingContext>
+        <viewmodels:CircularProgressPageViewModel />
+    </ContentPage.BindingContext>
+    <Grid RowDefinitions="300,100,100,100"
+          ColumnDefinitions="*,*"
+          ColumnSpacing="10"
+          Margin="10">
+
+        <controls:CircularProgress Grid.ColumnSpan="2"
+                                   x:Name="CircularProgress"
+                                   HorizontalOptions="Fill"
+                                   VerticalOptions="Fill"
+                                   Margin="20"
+                                   HeightRequest="200"
+                                   WidthRequest="200"/>
+
+        <Border Grid.Row="1"
+                BackgroundColor="#333"
+                HeightRequest="60"
+                HorizontalOptions="Fill"
+                StrokeShape="RoundRectangle, 10"
+                VerticalOptions="Center">
+            <Grid ColumnDefinitions="100,*">
+                <Label Margin="5,0,5,0"
+                       FontAttributes="Bold"
+                       FontSize="18"
+                       HorizontalOptions="Center"
+                       Text="Value"
+                       VerticalOptions="Center" />
+                <Entry Grid.Column="1"
+                       Margin="5,0,5,0"
+                       HorizontalOptions="Fill"
+                       Keyboard="Numeric"
+                       Text="{Binding Value}"
+                       TextColor="White"
+                       VerticalOptions="Center" />
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="1"
+                Grid.Column="1"
+                BackgroundColor="#333"
+                HeightRequest="60"
+                HorizontalOptions="Fill"
+                StrokeShape="RoundRectangle, 10"
+                VerticalOptions="Center">
+            <Grid ColumnDefinitions="100,*">
+                <Label Margin="5,0,5,0"
+                       FontAttributes="Bold"
+                       FontSize="18"
+                       HorizontalOptions="Center"
+                       Text="Max value"
+                       VerticalOptions="Center" />
+                <Entry Grid.Column="1"
+                       Margin="5,0,5,0"
+                       HorizontalOptions="Fill"
+                       Keyboard="Numeric"
+                       Text="{Binding MaxValue}"
+                       TextColor="White"
+                       VerticalOptions="Center" />
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="2"
+                Grid.ColumnSpan="2"
+                BackgroundColor="#333"
+                HeightRequest="60"
+                HorizontalOptions="Fill"
+                StrokeShape="RoundRectangle, 10"
+                VerticalOptions="Center">
+            <Grid ColumnDefinitions="100,*" Margin="10,0">
+                <Label FontAttributes="Bold"
+                       FontSize="18"
+                       HorizontalOptions="Center"
+                       Text="Speed"
+                       VerticalOptions="Center" />
+                <Entry Grid.Column="1"
+                       HorizontalOptions="Fill"
+                       Keyboard="Numeric"
+                       Text="{Binding Speed}"
+                       TextColor="White"
+                       VerticalOptions="Center" />
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="3"
+                BackgroundColor="#333"
+                HeightRequest="60"
+                HorizontalOptions="Fill"
+                StrokeShape="RoundRectangle, 10"
+                VerticalOptions="Center">
+            <Grid ColumnDefinitions="*,0.2*,*">
+                <Label Margin="5,0,0,0"
+                       FontAttributes="Bold"
+                       FontSize="18"
+                       HorizontalOptions="Center"
+                       Text="progress Color"
+                       VerticalOptions="Center" />
+                <Label Grid.Column="1"
+                       Margin="0,0,5,0"
+                       FontAttributes="Bold"
+                       FontSize="18"
+                       HorizontalOptions="Center"
+                       Text="#"
+                       VerticalOptions="Center" />
+                <Entry x:Name="txtProgressColor"
+                       Grid.Column="2"
+                       HorizontalOptions="Fill"
+                       TextColor="White"
+                       TextChanged="TxtProgressColor_OnTextChanged"
+                       VerticalOptions="Center" />
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="3"
+                Grid.Column="1"
+                BackgroundColor="#333"
+                HeightRequest="60"
+                HorizontalOptions="Fill"
+                StrokeShape="RoundRectangle, 10"
+                VerticalOptions="Center">
+            <Grid ColumnDefinitions="*,0.2*,*">
+                <Label Margin="5,0,0,0"
+                       FontAttributes="Bold"
+                       FontSize="18"
+                       HorizontalOptions="Center"
+                       Text="progress Color"
+                       VerticalOptions="Center" />
+                <Label Grid.Column="1"
+                       Margin="0,0,5,0"
+                       FontAttributes="Bold"
+                       FontSize="18"
+                       HorizontalOptions="Center"
+                       Text="#"
+                       VerticalOptions="Center" />
+                <Entry x:Name="txtIncaveColor"
+                       Grid.Column="2"
+                       HorizontalOptions="Fill"
+                       TextColor="White"
+                       TextChanged="TxtIncaveColor_OnTextChanged"
+                       VerticalOptions="Center" />
+            </Grid>
+        </Border>
+
+    </Grid>
+</views:BaseComponentPage>

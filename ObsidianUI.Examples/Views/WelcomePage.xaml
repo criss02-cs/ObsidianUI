@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<views:BaseComponentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                         xmlns:views="using:ObsidianUI.Examples.Views"
+                         xmlns:fa="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
+                         x:Class="ObsidianUI.Examples.Views.WelcomePage"
+                         Title="WelcomePage">
+    <Shell.TitleView>
+        <StackLayout></StackLayout>
+    </Shell.TitleView>
+    <Grid RowDefinitions="130,50,*,20,200">
+
+        <Label Text="OBSIDIAN UI"
+               VerticalOptions="End"
+               FontSize="50"
+               FontAttributes="Bold"
+               HorizontalOptions="Center" />
+
+        <Label Grid.Row="1"
+               Text="Components for all your needs"
+               HorizontalOptions="Center" />
+
+        <Image Grid.Row="2"
+               Source="obsidianui.png"
+               Margin="40" >
+            <Image.Shadow>
+                <Shadow Brush="#603978" Radius="50" Offset="0,0" Opacity="0.3"></Shadow>
+            </Image.Shadow>
+        </Image>
+
+        <HorizontalStackLayout Grid.Row="3"
+                               HorizontalOptions="Center"
+                               Opacity="0.6">
+            <ImageButton>
+                <ImageButton.Source>
+                    <FontImageSource FontFamily="FASolid"
+                                     Glyph="{x:Static fa:Solid.WeightScale}"
+                                     Color="White" />
+                </ImageButton.Source>
+            </ImageButton>
+            <ImageButton>
+                <ImageButton.Source>
+                    <FontImageSource FontFamily="FASolid"
+                                     Glyph="{x:Static fa:Solid.CheckToSlot}"
+                                     Color="White" />
+                </ImageButton.Source>
+            </ImageButton>
+        </HorizontalStackLayout>
+
+        <Button Grid.Row="4"
+                Text="Try out"
+                CornerRadius="20"
+                BackgroundColor="BlueViolet"
+                Margin="30,0,30,10"
+                Clicked="TryOut_Clicked"
+                HeightRequest="60"
+                TextColor="White"
+                FontAttributes="Bold"
+                FontSize="20"
+                BorderColor="#603978"
+                BorderWidth="3">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="1,0">
+                    <GradientStop Color="Black"
+                                  Offset="0" />
+                    <GradientStop Color="#120c2f"
+                                  Offset="1" />
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+    </Grid>
+</views:BaseComponentPage>

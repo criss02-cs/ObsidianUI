@@ -58,7 +58,9 @@ public partial class Thermometer : ContentView
         {
             this.AbortAnimation("animation");
         }
-        var h = (Temperatura / MaxValue) * scavo.Height;
+
+        var realTemp = Temperatura > MaxValue ? MaxValue : Temperatura;
+        var h = (realTemp / MaxValue) * (scavo.Height - 5);
         var anim = new Animation
         {
             { 0, 1, new Animation(v => path.TranslationY = v, path.TranslationY, h * -1) },
