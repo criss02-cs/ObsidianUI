@@ -24,7 +24,7 @@
     <ContentPage.BindingContext>
         <viewmodels:CircularProgressPageViewModel />
     </ContentPage.BindingContext>
-    <Grid RowDefinitions="300,100,100,100"
+    <Grid RowDefinitions="300,100,100,100,100"
           ColumnDefinitions="*,*"
           ColumnSpacing="10"
           Margin="10">
@@ -35,7 +35,14 @@
                                    VerticalOptions="Fill"
                                    Margin="20"
                                    HeightRequest="200"
-                                   WidthRequest="200"/>
+                                   WidthRequest="200"
+                                   ProgressColor="{Binding ProgressColor}"
+                                   ProgressThickness="{Binding ProgressThickness}"
+                                   Value="{Binding Value}"
+                                   MaxValue="{Binding MaxValue}"
+                                   Speed="{Binding Speed}" 
+                                   LineCap="{Binding LineCap}"
+                                   Text="{Binding Text}"/>
 
         <Border Grid.Row="1"
                 BackgroundColor="#333"
@@ -43,20 +50,27 @@
                 HorizontalOptions="Fill"
                 StrokeShape="RoundRectangle, 10"
                 VerticalOptions="Center">
-            <Grid ColumnDefinitions="100,*">
+            <Grid ColumnDefinitions="100,*,*">
                 <Label Margin="5,0,5,0"
                        FontAttributes="Bold"
                        FontSize="18"
                        HorizontalOptions="Center"
                        Text="Value"
                        VerticalOptions="Center" />
-                <Entry Grid.Column="1"
+                <Label 
+                       Grid.Column="1"
                        Margin="5,0,5,0"
                        HorizontalOptions="Fill"
-                       Keyboard="Numeric"
-                       Text="{Binding Value}"
+                       HorizontalTextAlignment="Center"
+                       Text="{Binding Source={x:Reference StepperValue}, Path=Value}"
                        TextColor="White"
                        VerticalOptions="Center" />
+                <Stepper x:Name="StepperValue"
+                         Value="{Binding Value}"
+                         Grid.Column="2"
+                         HorizontalOptions="Center" 
+                         Maximum="{Binding Source={x:Reference StepperMaxValue}, Path=Value}"/>
+
             </Grid>
         </Border>
 
@@ -67,42 +81,83 @@
                 HorizontalOptions="Fill"
                 StrokeShape="RoundRectangle, 10"
                 VerticalOptions="Center">
-            <Grid ColumnDefinitions="100,*">
-                <Label Margin="5,0,5,0"
-                       FontAttributes="Bold"
-                       FontSize="18"
-                       HorizontalOptions="Center"
-                       Text="Max value"
-                       VerticalOptions="Center" />
-                <Entry Grid.Column="1"
+            <Grid ColumnDefinitions="100,*,*">
+                <Label  Margin="5,0,5,0"
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        HorizontalOptions="Center"
+                        Text="Max value"
+                        VerticalOptions="Center" />
+                <Label 
+                       Grid.Column="1"
                        Margin="5,0,5,0"
                        HorizontalOptions="Fill"
-                       Keyboard="Numeric"
-                       Text="{Binding MaxValue}"
+                       Text="{Binding Source={x:Reference StepperMaxValue}, Path=Value}"
                        TextColor="White"
-                       VerticalOptions="Center" />
+                       VerticalOptions="Center"
+                       HorizontalTextAlignment="Center"/>
+                <Stepper x:Name="StepperMaxValue"
+                         Value="{Binding MaxValue}"
+                         Grid.Column="2"
+                         HorizontalOptions="Center"
+                         Maximum="10000"/>
             </Grid>
         </Border>
 
         <Border Grid.Row="2"
-                Grid.ColumnSpan="2"
                 BackgroundColor="#333"
                 HeightRequest="60"
                 HorizontalOptions="Fill"
                 StrokeShape="RoundRectangle, 10"
                 VerticalOptions="Center">
-            <Grid ColumnDefinitions="100,*" Margin="10,0">
-                <Label FontAttributes="Bold"
+            <Grid ColumnDefinitions="100,*,*">
+                <Label Margin="5,0,5,0"
+                       FontAttributes="Bold"
                        FontSize="18"
                        HorizontalOptions="Center"
                        Text="Speed"
                        VerticalOptions="Center" />
-                <Entry Grid.Column="1"
+                <Label Grid.Column="1"
+                       Margin="5,0,5,0"
                        HorizontalOptions="Fill"
-                       Keyboard="Numeric"
-                       Text="{Binding Speed}"
+                       HorizontalTextAlignment="Center"
+                       Text="{Binding Source={x:Reference StepperSpeed}, Path=Value}"
                        TextColor="White"
                        VerticalOptions="Center" />
+                <Stepper x:Name="StepperSpeed"
+                         Value="{Binding Speed}"
+                         Grid.Column="2"
+                         HorizontalOptions="Center" />
+
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="2"
+                Grid.Column="1"
+                BackgroundColor="#333"
+                HeightRequest="60"
+                HorizontalOptions="Fill"
+                StrokeShape="RoundRectangle, 10"
+                VerticalOptions="Center">
+            <Grid ColumnDefinitions="100,*,*">
+                <Label Margin="5,0,5,0"
+                       FontAttributes="Bold"
+                       FontSize="18"
+                       HorizontalOptions="Center"
+                       Text="Thickness"
+                       VerticalOptions="Center" />
+                <Label Grid.Column="1"
+                       Margin="5,0,5,0"
+                       HorizontalOptions="Fill"
+                       HorizontalTextAlignment="Center"
+                       Text="{Binding Source={x:Reference StepperProgressThickness}, Path=Value}"
+                       TextColor="White"
+                       VerticalOptions="Center" />
+                <Stepper x:Name="StepperProgressThickness"
+                         Value="{Binding ProgressThickness}"
+                         Grid.Column="2"
+                         HorizontalOptions="Center" />
+
             </Grid>
         </Border>
 
@@ -162,6 +217,59 @@
                        TextColor="White"
                        TextChanged="TxtIncaveColor_OnTextChanged"
                        VerticalOptions="Center" />
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="4"
+                BackgroundColor="#333"
+                HeightRequest="60"
+                HorizontalOptions="Fill"
+                StrokeShape="RoundRectangle, 10"
+                VerticalOptions="Center">
+            <Grid ColumnDefinitions="*,*">
+                <Label Margin="5,0,0,0"
+                       FontAttributes="Bold"
+                       FontSize="18"
+                       HorizontalOptions="Center"
+                       Text="Line Cap"
+                       VerticalOptions="Center" />
+                <Picker x:Name="pickerLineCap"
+                       Grid.Column="2"
+                       HorizontalOptions="Fill"
+                       TextColor="White"
+                       VerticalOptions="Center"
+                       SelectedItem="{Binding LineCap}">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type LineCap}">
+                            <LineCap>Round</LineCap>
+                            <LineCap>Square</LineCap>
+                            <LineCap>Butt</LineCap>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="4"
+                Grid.Column="1"
+                BackgroundColor="#333"
+                HeightRequest="60"
+                HorizontalOptions="Fill"
+                StrokeShape="RoundRectangle, 10"
+                VerticalOptions="Center">
+            <Grid ColumnDefinitions="*,0.2*,*">
+                <Label Margin="5,0,0,0"
+                       FontAttributes="Bold"
+                       FontSize="18"
+                       HorizontalOptions="Center"
+                       Text="Text"
+                       VerticalOptions="Center" />
+                <Entry x:Name="txtText"
+                       Grid.Column="2"
+                       HorizontalOptions="Fill"
+                       TextColor="White"
+                       VerticalOptions="Center"
+                       Text="{Binding Text}"/>
             </Grid>
         </Border>
 

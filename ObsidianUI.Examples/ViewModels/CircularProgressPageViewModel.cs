@@ -11,4 +11,6 @@ public partial class CircularProgressPageViewModel : ObservableObject
     [ObservableProperty] public int maxValue;
     [ObservableProperty] public int progressThickness;
     [ObservableProperty] public int speed;
+    [ObservableProperty] public LineCap lineCap;
+    [ObservableProperty] public string text;
 }

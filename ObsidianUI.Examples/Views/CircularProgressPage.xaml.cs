@@ -7,13 +7,22 @@ public partial class CircularProgressPage
 	public CircularProgressPage(CircularProgressPageViewModel vm)
 	{
 		InitializeComponent();
+		
+		BindingContext = vm;
+	}
+
+	protected override void OnAppearing()
+	{
 		txtProgressColor.Text = "5b237e";
 		txtIncaveColor.Text = "000000";
+		StepperSpeed.Value = 1;
+		StepperValue.Value = 50;
+		StepperMaxValue.Value = 100;
+		StepperProgressThickness.Value = 18;
+		txtText.Text = "Circular progress";
 
-		BindingContext = vm;
-
-		CircularProgress.SetBinding(Components.Controls.CircularProgress.ProgressThicknessProperty, "ProgressThickness");
-		CircularProgress.SetBinding(Components.Controls.CircularProgress.ValueProperty, "Value");
+		CircularProgress.Start();
+		base.OnAppearing();
 	}
 
 	private void TxtProgressColor_OnTextChanged(object? sender, TextChangedEventArgs e)
@@ -32,11 +41,11 @@ public partial class CircularProgressPage
 	{
 		try
 		{
-			CircularProgress.ProgressColor = Color.FromArgb($"#{txtIncaveColor.Text}");
+			CircularProgress.IncaveColor = Color.FromArgb($"#{txtIncaveColor.Text}");
 		}
 		catch (Exception)
 		{
-			CircularProgress.ProgressColor = Color.FromArgb("#000000");
+			CircularProgress.IncaveColor = Color.FromArgb("#000000");
 		}
 	}
 }
