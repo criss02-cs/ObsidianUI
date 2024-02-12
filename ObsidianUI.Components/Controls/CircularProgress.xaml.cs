@@ -39,7 +39,8 @@ public partial class CircularProgress
         BindableProperty.Create(nameof(ProgressThickness),
             typeof(int),
             typeof(CircularProgress),
-            18);
+            18,
+            BindingMode.TwoWay);
 
     public static readonly BindableProperty SpeedProperty =
         BindableProperty.Create(nameof(Speed),
@@ -94,7 +95,7 @@ public partial class CircularProgress
     {
         InitializeComponent();
 
-        var timer = new System.Timers.Timer(50);
+        var timer = new System.Timers.Timer(500);
         timer.Elapsed += DrawTimerElapsed;
         timer.Start();
 

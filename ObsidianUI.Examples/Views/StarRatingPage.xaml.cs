@@ -3,7 +3,7 @@ using ObsidianUI.Examples.ViewModels;
 
 namespace ObsidianUI.Examples.Views;
 
-public partial class StarRatingPage
+public partial class StarRatingPage : BaseComponentPage
 {
 	public StarRatingPage()
 	{

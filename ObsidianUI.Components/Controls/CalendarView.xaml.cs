@@ -1,7 +1,6 @@
 using System.Globalization;
 using Microsoft.Maui.Controls.Shapes;
 using ObsidianUI.Components.Interfaces;
-using ObsidianUI.Components.Utils;
 
 namespace ObsidianUI.Components.Controls;
 
@@ -24,8 +23,8 @@ public partial class CalendarView : ContentView
     public readonly BindableProperty OtherMonthDayTextColorProperty =
         BindableProperty.Create(nameof(OtherMonthDayTextColor), typeof(Color), typeof(CalendarView), Colors.Gray);
 
-    public readonly BindableProperty CalendarTypeProperty =
-        BindableProperty.Create(nameof(CalendarType), typeof(CalendarType), typeof(CalendarView), CalendarType.DAY);
+    //public readonly BindableProperty CalendarTypeProperty =
+    //    BindableProperty.Create(nameof(CalendarType), typeof(CalendarType), typeof(CalendarView), CalendarType.DAY);
 
     #endregion
 
@@ -49,11 +48,11 @@ public partial class CalendarView : ContentView
         set => SetValue(OtherMonthDayTextColorProperty, value);
     }
 
-    public CalendarType CalendarType
-    {
-        get => (CalendarType)GetValue(CalendarTypeProperty);
-        set => SetValue(CalendarTypeProperty, value);
-    }
+    //public CalendarType CalendarType
+    //{
+    //    get => (CalendarType)GetValue(CalendarTypeProperty);
+    //    set => SetValue(CalendarTypeProperty, value);
+    //}
 
     #endregion
 

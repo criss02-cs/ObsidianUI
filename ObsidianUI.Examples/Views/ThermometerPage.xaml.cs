@@ -2,7 +2,7 @@ using ObsidianUI.Examples.ViewModels;
 
 namespace ObsidianUI.Examples.Views;
 
-public partial class ThermometerPage
+public partial class ThermometerPage : BaseComponentPage
 {
 	public ThermometerPage(TermometroPageViewModel vm)
 	{
