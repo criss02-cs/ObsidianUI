@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ObsidianUI.Examples.ContentViews.StepperInputExample"
+             x:Name="this"
+             BindingContext="{x:Reference this}">
+    <Border BackgroundColor="#b2a7d0"
+            HorizontalOptions="Fill"
+            VerticalOptions="Fill"
+            StrokeThickness="2"
+            StrokeShape="RoundRectangle, 10"
+            Stroke="#34002d">
+        <Grid ColumnDefinitions="*,*,*"
+              RowDefinitions="0.4*,*">
+            <Label FontAttributes="Bold"
+                   Grid.ColumnSpan="3"
+                   FontSize="15"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   TextColor="Black"
+                   Text="{Binding LabelText}" />
+            <Border Grid.Row="1"
+                    Margin="5"
+                    Stroke="#34002d"
+                    StrokeThickness="1"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Fill"
+                    StrokeShape="RoundRectangle, 10">
+                <Label Text="-"
+                       HorizontalOptions="Fill"
+                       VerticalOptions="Fill"
+                       FontSize="18"
+                       TextColor="Black"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Minus_OnTapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </Border>
+            <Label Grid.Column="1"
+                   Grid.Row="1"
+                   Grid.RowSpan="2"
+                   Margin="10"
+                   FontSize="13"
+                   HorizontalOptions="Fill"
+                   VerticalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   TextColor="Black"
+                   Text="{Binding StepperValue}" />
+            <Border Grid.Row="1"
+                    Grid.Column="2"
+                    Margin="5"
+                    Stroke="#34002d"
+                    StrokeThickness="1"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Fill"
+                    StrokeShape="RoundRectangle, 10">
+                
+                <Label Text="+"
+                       HorizontalOptions="Fill"
+                       VerticalOptions="Fill"
+                       FontSize="18"
+                       TextColor="Black"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       >
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Plus_OnTapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </Border>
+
+        </Grid>
+
+    </Border>
+</ContentView>

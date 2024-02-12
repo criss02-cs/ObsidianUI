@@ -11,72 +11,84 @@ public partial class CircularProgress
         BindableProperty.Create(nameof(CornerRadius),
             typeof(int),
             typeof(CircularProgress),
-            10);
+            10, 
+            defaultBindingMode: BindingMode.TwoWay);
 
     public static readonly BindableProperty IncaveColorProperty =
             BindableProperty.Create(nameof(IncaveColor),
             typeof(Color),
             typeof(CircularProgress),
-            Colors.Black);
+            Colors.Black, 
+            defaultBindingMode: BindingMode.TwoWay);
 
     public static readonly BindableProperty MaxValueProperty =
-        BindableProperty.Create(nameof(Value),
+        BindableProperty.Create(nameof(MaxValue),
             typeof(int),
             typeof(CircularProgress),
-            100);
+            100, 
+            defaultBindingMode: BindingMode.TwoWay);
 
     public static readonly BindableProperty ProgressColorProperty =
             BindableProperty.Create(nameof(ProgressColor),
             typeof(Color),
             typeof(CircularProgress),
-            Colors.Purple);
+            Colors.Purple, 
+            defaultBindingMode: BindingMode.TwoWay);
+
     public static readonly BindableProperty ProgressThicknessProperty =
         BindableProperty.Create(nameof(ProgressThickness),
             typeof(int),
             typeof(CircularProgress),
-            18,
-            BindingMode.TwoWay);
+            18, 
+            defaultBindingMode: BindingMode.TwoWay);
 
-    public static readonly BindableProperty SpeedProperty =
-        BindableProperty.Create(nameof(Speed),
+    public static readonly BindableProperty StepProperty =
+        BindableProperty.Create(nameof(Step),
             typeof(int),
-            typeof(CircularProgress));
+            typeof(CircularProgress), 
+            1,
+            defaultBindingMode: BindingMode.TwoWay);
 
     public static readonly BindableProperty ValueProperty =
                 BindableProperty.Create(nameof(Value),
             typeof(int),
             typeof(CircularProgress),
-            50);
+            50,
+            defaultBindingMode: BindingMode.TwoWay);
+
     public static readonly BindableProperty TextProperty =
                 BindableProperty.Create(nameof(Text),
             typeof(string),
             typeof(CircularProgress),
-            string.Empty);
+            string.Empty,
+            defaultBindingMode: BindingMode.TwoWay);
 
     public static readonly BindableProperty HorizontalAlignmentProperty =
         BindableProperty.Create(nameof(VerticalAlignment),
             typeof(HorizontalAlignment),
             typeof(CircularProgress),
-            HorizontalAlignment.Center);
+            HorizontalAlignment.Center,
+            defaultBindingMode: BindingMode.TwoWay);
 
     public static readonly BindableProperty VerticalAlignmentProperty =
                 BindableProperty.Create(nameof(VerticalAlignment),
             typeof(VerticalAlignment),
             typeof(CircularProgress),
-            VerticalAlignment.Center);
+            VerticalAlignment.Center, 
+            defaultBindingMode: BindingMode.TwoWay);
 
     public static readonly BindableProperty LineCapProperty =
                 BindableProperty.Create(nameof(LineCap),
             typeof(LineCap),
             typeof(CircularProgress),
-            LineCap.Round);
+            LineCap.Round,
+            defaultBindingMode: BindingMode.TwoWay);
 
     private readonly GraphicsView _graphicView;
 
     public CircularProgress()
     {
         InitializeComponent();
-
 
         _graphicView = new GraphicsView
         {
@@ -85,8 +97,7 @@ public partial class CircularProgress
 
         Content = _graphicView;
 
-
-        DrawTimer = new Timer(50);
+        DrawTimer = new Timer(500);
         DrawTimer.Elapsed += DrawTimerElapsed;
     }
 
@@ -115,16 +126,17 @@ public partial class CircularProgress
         get => (Color)GetValue(ProgressColorProperty);
         set => SetValue(ProgressColorProperty, value);
     }
+
     public int ProgressThickness
     {
         get => (int)GetValue(ProgressThicknessProperty);
         set => SetValue(ProgressThicknessProperty, value);
     }
 
-    public int Speed
+    public int Step
     {
-        get => (int)GetValue(SpeedProperty);
-        set => SetValue(SpeedProperty, value);
+        get => (int)GetValue(StepProperty);
+        set => SetValue(StepProperty, value);
     }
 
     public int Value
@@ -132,16 +144,19 @@ public partial class CircularProgress
         get => (int)GetValue(ValueProperty);
         set => SetValue(ValueProperty, value);
     }
+
     public string Text
     {
         get => (string)GetValue(TextProperty);
         set => SetValue(TextProperty, value);
     }
+
     public HorizontalAlignment HorizontalAlignment
     {
         get => (HorizontalAlignment)GetValue(HorizontalAlignmentProperty);
         set => SetValue(HorizontalAlignmentProperty, value);
     }
+
     public VerticalAlignment VerticalAlignment
     {
         get => (VerticalAlignment)GetValue(VerticalAlignmentProperty);
@@ -158,10 +173,12 @@ public partial class CircularProgress
     {
         DrawTimer.Start();
     }
+
     public void Stop()
     {
         DrawTimer.Stop();
     }
+
     private void DrawTimerElapsed(object? sender, ElapsedEventArgs e)
     {
         _graphicView.Invalidate();

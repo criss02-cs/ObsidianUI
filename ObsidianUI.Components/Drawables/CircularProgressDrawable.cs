@@ -31,7 +31,7 @@ internal class CircularProgressDrawable(CircularProgress cp) : IDrawable
         canvas.DrawString(cp.Text, rect, cp.HorizontalAlignment, cp.VerticalAlignment);
 
         canvas.StrokeSize = strokeWith;
-        canvas.Rotate(cp.Speed, rect.Width / 2, rect.Height / 2);
+        canvas.Rotate(cp.Step, rect.Width / 2, rect.Height / 2);
         canvas.StrokeLineCap = cp.LineCap;
         if (cp.Value == cp.MaxValue) cp.Value = cp.MaxValue - 1;
         canvas.StrokeLineJoin = LineJoin.Bevel;

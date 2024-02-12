@@ -13,13 +13,13 @@ public partial class CircularProgressPage
 
 	protected override void OnAppearing()
 	{
-		txtProgressColor.Text = "5b237e";
-		txtIncaveColor.Text = "000000";
-		StepperSpeed.Value = 1;
-		StepperValue.Value = 50;
-		StepperMaxValue.Value = 100;
-		StepperProgressThickness.Value = 18;
-		txtText.Text = "Circular progress";
+		//txtProgressColor.Text = "5b237e";
+		//txtIncaveColor.Text = "000000";
+		//StepperSpeed.Value = 1;
+		//StepperValue.Value = 50;
+		//StepperMaxValue.Value = 100;
+		//StepperProgressThickness.Value = 18;
+		//txtText.Text = "Circular progress";
 
 		CircularProgress.Start();
 		base.OnAppearing();
@@ -29,7 +29,7 @@ public partial class CircularProgressPage
 	{
 		try
 		{
-			CircularProgress.ProgressColor = Color.FromArgb($"#{txtProgressColor.Text}");
+			//CircularProgress.ProgressColor = Color.FromArgb($"#{txtProgressColor.Text}");
 		}
 		catch (Exception)
 		{
@@ -41,7 +41,7 @@ public partial class CircularProgressPage
 	{
 		try
 		{
-			CircularProgress.IncaveColor = Color.FromArgb($"#{txtIncaveColor.Text}");
+			//CircularProgress.IncaveColor = Color.FromArgb($"#{txtIncaveColor.Text}");
 		}
 		catch (Exception)
 		{

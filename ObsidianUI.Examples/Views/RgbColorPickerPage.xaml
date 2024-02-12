@@ -17,5 +17,5 @@
                    FontSize="Medium" />
         </HorizontalStackLayout>
     </Shell.TitleView>
-    <controls:RgbColorPicker Rgb="(50,50,05)" />
+    <controls:RgbColorPicker Rgb="(50,50,05)" HeightRequest="300" WidthRequest="500" />
 </views:BaseComponentPage>

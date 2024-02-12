@@ -1,94 +1,88 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentView
-    x:Class="ObsidianUI.Components.Controls.RgbColorPicker"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Name="this">
+<ContentView x:Class="ObsidianUI.Components.Controls.RgbColorPicker"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Name="this">
     <ContentView.Resources>
-        <Style TargetType="Slider" x:Key="SliderStyle">
-            <Setter Property="Maximum" Value="255"/>
-            <Setter Property="VerticalOptions" Value="Center"/>
+        <Style TargetType="Slider"
+               x:Key="SliderStyle">
+            <Setter Property="Maximum"
+                    Value="255" />
+            <Setter Property="VerticalOptions"
+                    Value="Center" />
         </Style>
-        <Style TargetType="Label" x:Key="LabelStyle">
-            <Setter Property="HorizontalOptions" Value="Center"/>
-            <Setter Property="VerticalOptions" Value="Center"/>
+        <Style TargetType="Label"
+               x:Key="LabelStyle">
+            <Setter Property="HorizontalOptions"
+                    Value="Center" />
+            <Setter Property="VerticalOptions"
+                    Value="Center" />
         </Style>
     </ContentView.Resources>
-    <StackLayout>
-        <Border Stroke="White">
-            <Grid Padding="5" BackgroundColor="{Binding BackgroundColor, Source={x:Reference this}}">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="20" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="35" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="100" />
-                    <RowDefinition Height="50" />
-                    <RowDefinition Height="50" />
-                    <RowDefinition Height="50" />
-                </Grid.RowDefinitions>
-                <Rectangle
-                    x:Name="Rectangle"
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="3" />
-                <Label
-                    Grid.Row="1"
-                    Grid.Column="0"
-                    Text="R"
-                    Style="{StaticResource LabelStyle}"/>
-                <Slider
-                    x:Name="RedSlider"
+    <Border Stroke="White" StrokeShape="RoundRectangle, 10">
+        <Grid 
+              BackgroundColor="{Binding BackgroundColor, Source={x:Reference this}}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.05*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="0.10*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.25*" />
+                <RowDefinition Height="0.25*" />
+                <RowDefinition Height="0.25*" />
+                <RowDefinition Height="0.25*" />
+            </Grid.RowDefinitions>
+            <Rectangle x:Name="Rectangle"
+                       Grid.Row="0"
+                       Grid.Column="0"
+                       Grid.ColumnSpan="3" />
+            <Label Grid.Row="1"
+                   Grid.Column="0"
+                   Text="R"
+                   Style="{StaticResource LabelStyle}" />
+            <Slider x:Name="RedSlider"
                     Grid.Row="1"
                     Grid.Column="1"
                     MinimumTrackColor="Red"
                     ThumbColor="Red"
-                    ValueChanged="Slider_OnValueChanged" 
-                    Style="{StaticResource SliderStyle}"/>
-                <Label
-                    Grid.Row="1"
-                    Grid.Column="2"
-                    Text="{Binding Source={x:Reference RedSlider}, Path=Value, StringFormat='{0:F0}'}"
-                    Style="{StaticResource LabelStyle}" />
-                <Label
-                    Grid.Row="2"
-                    Grid.Column="0"
-                    HorizontalOptions="Center"
-                    Text="G"
-                    VerticalOptions="Center" />
-                <Slider
-                    x:Name="GreenSlider"
+                    ValueChanged="Slider_OnValueChanged"
+                    Style="{StaticResource SliderStyle}" />
+            <Label Grid.Row="1"
+                   Grid.Column="2"
+                   Text="{Binding Source={x:Reference RedSlider}, Path=Value, StringFormat='{0:F0}'}"
+                   Style="{StaticResource LabelStyle}" />
+            <Label Grid.Row="2"
+                   Grid.Column="0"
+                   HorizontalOptions="Center"
+                   Text="G"
+                   VerticalOptions="Center" />
+            <Slider x:Name="GreenSlider"
                     Grid.Row="2"
                     Grid.Column="1"
                     MinimumTrackColor="Green"
                     ThumbColor="Green"
                     ValueChanged="Slider_OnValueChanged"
-                    Style="{StaticResource SliderStyle}"/>
-                <Label
-                    Grid.Row="2"
-                    Grid.Column="2"
-                    Text="{Binding Source={x:Reference GreenSlider}, Path=Value, StringFormat='{0:F0}'}"
-                    Style="{StaticResource LabelStyle}"/>
-                <Label
-                    Grid.Row="3"
-                    Grid.Column="0"
-                    Text="B"
-                    Style="{StaticResource LabelStyle}"/>
-                <Slider
-                    x:Name="BlueSlider"
+                    Style="{StaticResource SliderStyle}" />
+            <Label Grid.Row="2"
+                   Grid.Column="2"
+                   Text="{Binding Source={x:Reference GreenSlider}, Path=Value, StringFormat='{0:F0}'}"
+                   Style="{StaticResource LabelStyle}" />
+            <Label Grid.Row="3"
+                   Grid.Column="0"
+                   Text="B"
+                   Style="{StaticResource LabelStyle}" />
+            <Slider x:Name="BlueSlider"
                     Grid.Row="3"
                     Grid.Column="1"
                     Style="{StaticResource SliderStyle}"
                     MinimumTrackColor="Blue"
                     ThumbColor="Blue"
                     ValueChanged="Slider_OnValueChanged" />
-                <Label
-                    Grid.Row="3"
-                    Grid.Column="2"
-                    Text="{Binding Source={x:Reference BlueSlider}, Path=Value, StringFormat='{0:F0}'}"
-                    Style="{StaticResource LabelStyle}" />
-            </Grid>
-        </Border>
-    </StackLayout>
+            <Label Grid.Row="3"
+                   Grid.Column="2"
+                   Text="{Binding Source={x:Reference BlueSlider}, Path=Value, StringFormat='{0:F0}'}"
+                   Style="{StaticResource LabelStyle}" />
+        </Grid>
+    </Border>
 </ContentView>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:obsComponents="http://schemas.enisn-projects.io/dotnet/maui/obsidianui/components"
+             x:Class="ObsidianUI.Examples.ContentViews.ColorInputExample"
+             x:Name="this"
+             BindingContext="{x:Reference this}">
+    <Border BackgroundColor="#b2a7d0"
+            HorizontalOptions="Fill"
+            VerticalOptions="Fill"
+            StrokeThickness="2"
+            StrokeShape="RoundRectangle, 10"
+            Stroke="#34002d">
+        <Grid >
+            <obsComponents:RgbColorPicker Rgb="(50,50,05)" />
+            <Label FontAttributes="Bold"
+                   FontSize="15"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Start"
+                   HorizontalTextAlignment="Center"
+                   TextColor="Black"
+                   Text="{Binding LabelText}" />
+            
+        </Grid>
+
+    </Border>
+</ContentView>

@@ -75,6 +75,33 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="ContentViews\ColorInputExample.xaml.cs">
+	    <DependentUpon>ColorInputExample.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="ContentViews\PickerInputExample.xaml.cs">
+	    <DependentUpon>PickerInputExample.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="ContentViews\StepperInputExample.xaml.cs">
+	    <DependentUpon>StepperInputExample.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="ContentViews\EntryInputExample.xaml.cs">
+	    <DependentUpon>EntryInputExample.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="ContentViews\ColorInputExample.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="ContentViews\PickerInputExample.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="ContentViews\StepperInputExample.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="ContentViews\EntryInputExample.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\BaseComponentPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
