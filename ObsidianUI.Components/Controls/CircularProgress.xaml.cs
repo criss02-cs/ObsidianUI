@@ -1,33 +1,23 @@
 using System.Timers;
+using Microsoft.Maui.Graphics.Text;
 using ObsidianUI.Components.Drawables;
+using Timer = System.Timers.Timer;
 
 namespace ObsidianUI.Components.Controls;
 
 public partial class CircularProgress
 {
-    public static readonly BindableProperty IncaveColorProperty =
-        BindableProperty.Create(nameof(IncaveColor),
-            typeof(Color),
-            typeof(CircularProgress),
-            Colors.Black);
-
-    public static readonly BindableProperty ProgressColorProperty =
-        BindableProperty.Create(nameof(ProgressColor),
-            typeof(Color),
-            typeof(CircularProgress),
-            Colors.Purple);
-
     public static readonly BindableProperty CornerRadiusProperty =
         BindableProperty.Create(nameof(CornerRadius),
             typeof(int),
             typeof(CircularProgress),
             10);
 
-    public static readonly BindableProperty ValueProperty =
-        BindableProperty.Create(nameof(Value),
-            typeof(int),
+    public static readonly BindableProperty IncaveColorProperty =
+            BindableProperty.Create(nameof(IncaveColor),
+            typeof(Color),
             typeof(CircularProgress),
-            50);
+            Colors.Black);
 
     public static readonly BindableProperty MaxValueProperty =
         BindableProperty.Create(nameof(Value),
@@ -35,6 +25,11 @@ public partial class CircularProgress
             typeof(CircularProgress),
             100);
 
+    public static readonly BindableProperty ProgressColorProperty =
+            BindableProperty.Create(nameof(ProgressColor),
+            typeof(Color),
+            typeof(CircularProgress),
+            Colors.Purple);
     public static readonly BindableProperty ProgressThicknessProperty =
         BindableProperty.Create(nameof(ProgressThickness),
             typeof(int),
@@ -47,19 +42,55 @@ public partial class CircularProgress
             typeof(int),
             typeof(CircularProgress));
 
+    public static readonly BindableProperty ValueProperty =
+                BindableProperty.Create(nameof(Value),
+            typeof(int),
+            typeof(CircularProgress),
+            50);
+    public static readonly BindableProperty TextProperty =
+                BindableProperty.Create(nameof(Text),
+            typeof(string),
+            typeof(CircularProgress),
+            string.Empty);
+
+    public static readonly BindableProperty HorizontalAlignmentProperty =
+        BindableProperty.Create(nameof(VerticalAlignment),
+            typeof(HorizontalAlignment),
+            typeof(CircularProgress),
+            HorizontalAlignment.Center);
+
+    public static readonly BindableProperty VerticalAlignmentProperty =
+                BindableProperty.Create(nameof(VerticalAlignment),
+            typeof(VerticalAlignment),
+            typeof(CircularProgress),
+            VerticalAlignment.Center);
+
+    public static readonly BindableProperty LineCapProperty =
+                BindableProperty.Create(nameof(LineCap),
+            typeof(LineCap),
+            typeof(CircularProgress),
+            LineCap.Round);
+
     private readonly GraphicsView _graphicView;
 
-    public Color IncaveColor
+    public CircularProgress()
     {
-        get => (Color)GetValue(IncaveColorProperty);
-        set => SetValue(IncaveColorProperty, value);
+        InitializeComponent();
+
+
+        _graphicView = new GraphicsView
+        {
+            Drawable = new CircularProgressDrawable(this)
+        };
+
+        Content = _graphicView;
+
+
+        DrawTimer = new Timer(50);
+        DrawTimer.Elapsed += DrawTimerElapsed;
     }
 
-    public Color ProgressColor
-    {
-        get => (Color)GetValue(ProgressColorProperty);
-        set => SetValue(ProgressColorProperty, value);
-    }
+    private Timer DrawTimer { get; }
 
     public int CornerRadius
     {
@@ -67,10 +98,10 @@ public partial class CircularProgress
         set => SetValue(CornerRadiusProperty, value);
     }
 
-    public int Value
+    public Color IncaveColor
     {
-        get => (int)GetValue(ValueProperty);
-        set => SetValue(ValueProperty, value);
+        get => (Color)GetValue(IncaveColorProperty);
+        set => SetValue(IncaveColorProperty, value);
     }
 
     public int MaxValue
@@ -79,6 +110,11 @@ public partial class CircularProgress
         set => SetValue(MaxValueProperty, value);
     }
 
+    public Color ProgressColor
+    {
+        get => (Color)GetValue(ProgressColorProperty);
+        set => SetValue(ProgressColorProperty, value);
+    }
     public int ProgressThickness
     {
         get => (int)GetValue(ProgressThicknessProperty);
@@ -91,22 +127,41 @@ public partial class CircularProgress
         set => SetValue(SpeedProperty, value);
     }
 
-    public CircularProgress()
+    public int Value
     {
-        InitializeComponent();
-
-        var timer = new System.Timers.Timer(500);
-        timer.Elapsed += DrawTimerElapsed;
-        timer.Start();
-
-        _graphicView = new GraphicsView
-        {
-            Drawable = new CircularProgressDrawable(this)
-        };
-
-        Content = _graphicView;
+        get => (int)GetValue(ValueProperty);
+        set => SetValue(ValueProperty, value);
+    }
+    public string Text
+    {
+        get => (string)GetValue(TextProperty);
+        set => SetValue(TextProperty, value);
+    }
+    public HorizontalAlignment HorizontalAlignment
+    {
+        get => (HorizontalAlignment)GetValue(HorizontalAlignmentProperty);
+        set => SetValue(HorizontalAlignmentProperty, value);
+    }
+    public VerticalAlignment VerticalAlignment
+    {
+        get => (VerticalAlignment)GetValue(VerticalAlignmentProperty);
+        set => SetValue(VerticalAlignmentProperty, value);
     }
 
+    public LineCap LineCap
+    {
+        get => (LineCap)GetValue(LineCapProperty);
+        set => SetValue(LineCapProperty, value);
+    }
+
+    public void Start()
+    {
+        DrawTimer.Start();
+    }
+    public void Stop()
+    {
+        DrawTimer.Stop();
+    }
     private void DrawTimerElapsed(object? sender, ElapsedEventArgs e)
     {
         _graphicView.Invalidate();
