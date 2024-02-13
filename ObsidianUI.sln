@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ObsidianUI.Examples", "Obsi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ObsidianUI.Components", "ObsidianUI.Components\ObsidianUI.Components.csproj", "{92968FAD-186F-45B2-9FEC-1FB2CBD16C5C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObsidianUI.Icons.FontAwesome", "ObsidianUI.Icons.FontAwesome\ObsidianUI.Icons.FontAwesome.csproj", "{EF4C67E1-2A95-49DF-9DA5-32046E93D852}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{92968FAD-186F-45B2-9FEC-1FB2CBD16C5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92968FAD-186F-45B2-9FEC-1FB2CBD16C5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92968FAD-186F-45B2-9FEC-1FB2CBD16C5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF4C67E1-2A95-49DF-9DA5-32046E93D852}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF4C67E1-2A95-49DF-9DA5-32046E93D852}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF4C67E1-2A95-49DF-9DA5-32046E93D852}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF4C67E1-2A95-49DF-9DA5-32046E93D852}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
