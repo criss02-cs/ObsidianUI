@@ -21,7 +21,7 @@
 		<Nullable>enable</Nullable>
 
 		<!-- Display name -->
-		<ApplicationTitle>ObsidianUI Examples</ApplicationTitle>
+		<ApplicationTitle>ObsidianUI</ApplicationTitle>
 
 		<!-- App Identifier -->
 		<ApplicationId>it.obsidianui.examples</ApplicationId>

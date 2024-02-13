@@ -13,11 +13,13 @@
         <Label Text="OBSIDIAN UI"
                VerticalOptions="End"
                FontSize="50"
+               TextColor="White"
                FontAttributes="Bold"
                HorizontalOptions="Center" />
 
         <Label Grid.Row="1"
                Text="Components for all your needs"
+               TextColor="White"
                HorizontalOptions="Center" />
 
         <Image Grid.Row="2"
