@@ -1,5 +1,5 @@
+using System.ComponentModel;
 using System.Windows.Input;
-using CommunityToolkit.Mvvm.Input;
 
 namespace ObsidianUI.Examples.ContentViews;
 
@@ -17,7 +17,7 @@ public partial class StepperInputExample
 			typeof(int),
 			typeof(StepperInputExample),
 			1,
-			BindingMode.TwoWay);
+			BindingMode.OneWay);
 
 	public static BindableProperty MinStepperValueProperty =
 		BindableProperty.Create(nameof(MinStepperValue),
@@ -31,20 +31,22 @@ public partial class StepperInputExample
 			typeof(int),
 			typeof(StepperInputExample),
 			100,
-			BindingMode.TwoWay);
+			BindingMode.OneWay);
 
 	public event EventHandler<EventArgs> PlusClicked;
 	public event EventHandler<EventArgs> MinusClicked;
+	public event EventHandler<EventArgs> PlusClicking;
+	public event EventHandler<EventArgs> MinusClicking;
 
 	public static BindableProperty PlusCommandProperty =
 		BindableProperty.Create(nameof(PlusCommand),
 			typeof(ICommand),
-			typeof(StepperInputExample),null);
+			typeof(StepperInputExample));
 
 	public static BindableProperty MinusCommandProperty =
 		BindableProperty.Create(nameof(MinusCommand),
 			typeof(ICommand),
-			typeof(StepperInputExample), null);
+			typeof(StepperInputExample));
 
 	public ICommand MinusCommand
 	{
@@ -86,21 +88,30 @@ public partial class StepperInputExample
 
 	private void Plus_OnTapped(object? sender, TappedEventArgs e)
 	{
-		PlusClicked?.Invoke(sender, e);
-		
+		var cancel = new CancelEventArgs(false);
+		PlusClicking?.Invoke(sender, cancel);
+		if (cancel.Cancel)
+			return;
+
 		if (StepperValue == MaxStepperValue)
 			return;
 
 		StepperValue++;
+
+		PlusClicked?.Invoke(sender, e);
 	}
 	private void Minus_OnTapped(object? sender, TappedEventArgs e)
 	{
-		MinusClicked?.Invoke(sender,e);
+		var cancel = new CancelEventArgs(false);
+		MinusClicking?.Invoke(sender, cancel);
+		if (cancel.Cancel)
+			return;
 
 		if (StepperValue == MinStepperValue)
 			return;
 
 		StepperValue--;
-		
+
+		MinusClicked?.Invoke(sender,e);
 	}
 }

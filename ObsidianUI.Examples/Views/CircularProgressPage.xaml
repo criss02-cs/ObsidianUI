@@ -31,8 +31,8 @@
           RowSpacing="10"
           Margin="10">
 
-        <controls:CircularProgress Grid.ColumnSpan="2"
-                                   x:Name="CircularProgress"
+        <controls:CircularProgress x:Name="CircularProgress"
+                                   Grid.ColumnSpan="2"
                                    HorizontalOptions="Fill"
                                    VerticalOptions="Fill"
                                    Margin="20"
@@ -46,46 +46,42 @@
                                    LineCap="{Binding LineCap}"
                                    Text="{Binding Text}" />
 
-        <contentViews:StepperInputExample Grid.Row="1"
+        <contentViews:StepperInputExample x:Name="StepperValue"
+                                          Grid.Row="1"
                                           LabelText="Value"
                                           StepperValue="{Binding Value}"
                                           MaxStepperValue="{Binding Source={x:Reference MaxValueStepper}, Path=StepperValue}"
                                           HorizontalOptions="Fill"
-                                          VerticalOptions="Fill">
+                                          VerticalOptions="Fill" />
 
-        </contentViews:StepperInputExample>
-
-        <contentViews:StepperInputExample Grid.Row="1"
+        <contentViews:StepperInputExample x:Name="StepperMaxValue"
+                                          Grid.Row="1"
                                           Grid.Column="2"
-                                          x:Name="MaxValueStepper"
                                           LabelText=" Max value"
                                           StepperValue="{Binding MaxValue}"
                                           MaxStepperValue="10000"
                                           MinStepperValue="0"
                                           HorizontalOptions="Fill"
-                                          VerticalOptions="Fill">
+                                          VerticalOptions="Fill" />
 
-        </contentViews:StepperInputExample>
-
-        <contentViews:StepperInputExample Grid.Row="2"
+        <contentViews:StepperInputExample x:Name="StepperSpeed"
+                                          Grid.Row="2"
                                           LabelText="Speed"
                                           StepperValue="{Binding Speed}"
                                           HorizontalOptions="Fill"
-                                          VerticalOptions="Fill">
+                                          VerticalOptions="Fill" />
 
-        </contentViews:StepperInputExample>
-
-        <contentViews:StepperInputExample Grid.Row="2"
+        <contentViews:StepperInputExample x:Name="StepperProgressThickness"
+                                          Grid.Row="2"
                                           Grid.Column="2"
                                           LabelText="Progress Thickness"
                                           HorizontalOptions="Fill"
                                           VerticalOptions="Fill"
                                           PlusCommand="{Binding AddThicknessCommand}"
-                                          MinusCommand="{Binding RemoveThicknessCommand}">
+                                          MinusCommand="{Binding RemoveThicknessCommand}" />
 
-        </contentViews:StepperInputExample>
-
-        <contentViews:PickerInputExample Grid.Row="3"
+        <contentViews:PickerInputExample x:Name="PickerLineCap"
+                                         Grid.Row="3"
                                          SelectedItem="{Binding LineCap}"
                                          LabelText="LineCap">
             <contentViews:PickerInputExample.ItemSource>
@@ -97,12 +93,11 @@
             </contentViews:PickerInputExample.ItemSource>
         </contentViews:PickerInputExample>
 
-        <contentViews:ColorInputExample Grid.Row="3"
+        <contentViews:ColorInputExample x:Name="ColorProgress"
+                                        Grid.Row="3"
                                         Grid.Column="1"
                                         LabelText="Color"
-                                        Color="{Binding ProgressColor}">
-
-        </contentViews:ColorInputExample>
+                                        Color="{Binding ProgressColor}" />
 
     </Grid>
 </views:BaseComponentPage>

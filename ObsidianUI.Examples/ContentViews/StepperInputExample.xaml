@@ -68,7 +68,7 @@
                        VerticalTextAlignment="Center"
                        >
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="Plus_OnTapped" />
+                        <TapGestureRecognizer Tapped="Plus_OnTapped" Command="{Binding PlusCommand}" />
                     </Label.GestureRecognizers>
                 </Label>
             </Border>
