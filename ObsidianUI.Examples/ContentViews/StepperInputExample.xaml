@@ -4,12 +4,12 @@
              x:Class="ObsidianUI.Examples.ContentViews.StepperInputExample"
              x:Name="this"
              BindingContext="{x:Reference this}">
-    <Border BackgroundColor="#b2a7d0"
+    <Border BackgroundColor="{StaticResource MidnightBlue}"
             HorizontalOptions="Fill"
             VerticalOptions="Fill"
             StrokeThickness="2"
             StrokeShape="RoundRectangle, 10"
-            Stroke="#34002d">
+            Stroke="{StaticResource Primary}">
         <Grid ColumnDefinitions="*,*,*"
               RowDefinitions="0.4*,*">
             <Label FontAttributes="Bold"
@@ -18,11 +18,11 @@
                    HorizontalOptions="Center"
                    VerticalOptions="Center"
                    HorizontalTextAlignment="Center"
-                   TextColor="Black"
+                   TextColor="{StaticResource PrimaryDark}"
                    Text="{Binding LabelText}" />
             <Border Grid.Row="1"
                     Margin="5"
-                    Stroke="#34002d"
+                    Stroke="{StaticResource Primary}"
                     StrokeThickness="1"
                     HorizontalOptions="Fill"
                     VerticalOptions="Fill"
@@ -31,11 +31,12 @@
                        HorizontalOptions="Fill"
                        VerticalOptions="Fill"
                        FontSize="18"
-                       TextColor="Black"
+                       TextColor="{StaticResource PrimaryDark}"
                        HorizontalTextAlignment="Center"
                        VerticalTextAlignment="Center">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="Minus_OnTapped" />
+                        <TapGestureRecognizer Tapped="Minus_OnTapped"
+                                              Command="{Binding MinusCommand}" />
                     </Label.GestureRecognizers>
                 </Label>
             </Border>
@@ -47,12 +48,12 @@
                    HorizontalOptions="Fill"
                    VerticalOptions="Center"
                    HorizontalTextAlignment="Center"
-                   TextColor="Black"
+                   TextColor="{StaticResource PrimaryDark}"
                    Text="{Binding StepperValue}" />
             <Border Grid.Row="1"
                     Grid.Column="2"
                     Margin="5"
-                    Stroke="#34002d"
+                    Stroke="{StaticResource Primary}"
                     StrokeThickness="1"
                     HorizontalOptions="Fill"
                     VerticalOptions="Fill"
@@ -62,7 +63,7 @@
                        HorizontalOptions="Fill"
                        VerticalOptions="Fill"
                        FontSize="18"
-                       TextColor="Black"
+                       TextColor="{StaticResource PrimaryDark}"
                        HorizontalTextAlignment="Center"
                        VerticalTextAlignment="Center"
                        >

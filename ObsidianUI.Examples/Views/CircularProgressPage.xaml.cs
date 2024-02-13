@@ -48,4 +48,9 @@ public partial class CircularProgressPage
 			CircularProgress.IncaveColor = Color.FromArgb("#000000");
 		}
 	}
+
+	private void StepperInputExample_OnPlusClicked(object? sender, EventArgs e)
+	{
+		CircularProgress.ProgressThickness++;
+	}
 }

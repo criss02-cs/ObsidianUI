@@ -28,6 +28,7 @@
     <Grid RowDefinitions="*,120,120,120"
           ColumnDefinitions="*,*"
           ColumnSpacing="10"
+          RowSpacing="10"
           Margin="10">
 
         <controls:CircularProgress Grid.ColumnSpan="2"
@@ -77,9 +78,10 @@
         <contentViews:StepperInputExample Grid.Row="2"
                                           Grid.Column="2"
                                           LabelText="Progress Thickness"
-                                          StepperValue="{Binding ProgressThickness}"
                                           HorizontalOptions="Fill"
-                                          VerticalOptions="Fill">
+                                          VerticalOptions="Fill"
+                                          PlusCommand="{Binding AddThicknessCommand}"
+                                          MinusCommand="{Binding RemoveThicknessCommand}">
 
         </contentViews:StepperInputExample>
 
@@ -97,7 +99,7 @@
 
         <contentViews:ColorInputExample Grid.Row="3"
                                         Grid.Column="1"
-                                        LabelText="LineCap"
+                                        LabelText="Color"
                                         Color="{Binding ProgressColor}">
 
         </contentViews:ColorInputExample>
