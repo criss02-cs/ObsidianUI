@@ -16,13 +16,13 @@ public partial class CircularProgressPageViewModel : ObservableObject
     [ObservableProperty] public string text;
 
     [RelayCommand]
-    public void AddThickness()
+    private void AddThickness()
     {
         ProgressThickness++;
     }
 
     [RelayCommand]
-    public void RemoveThickness()
+    private void RemoveThickness()
     {
         ProgressThickness--;
     }

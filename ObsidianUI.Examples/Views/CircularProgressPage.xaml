@@ -51,6 +51,8 @@
                                           LabelText="Value"
                                           StepperValue="{Binding Value}"
                                           MaxStepperValue="{Binding Source={x:Reference MaxValueStepper}, Path=StepperValue}"
+                                          PlusCommand="{Binding AddThicknessCommand}"
+                                          MinusCommand="{Binding RemoveThicknessCommand}"
                                           HorizontalOptions="Fill"
                                           VerticalOptions="Fill" />
 

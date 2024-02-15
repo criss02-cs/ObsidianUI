@@ -8,7 +8,7 @@
     <Shell.TitleView>
         <StackLayout></StackLayout>
     </Shell.TitleView>
-    <Grid RowDefinitions="130,50,*,20,200">
+    <Grid RowDefinitions="130,50,*,40,150">
 
         <Label Text="OBSIDIAN UI"
                VerticalOptions="End"
@@ -37,7 +37,7 @@
                 <ImageButton.Source>
                     <FontImageSource FontFamily="FASolid"
                                      Glyph="{x:Static fa:Solid.WeightScale}"
-                                     Color="White" />
+                                     Color="White"/>
                 </ImageButton.Source>
             </ImageButton>
             <ImageButton>

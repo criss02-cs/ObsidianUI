@@ -11,6 +11,7 @@ public partial class WelcomePage
 
 	private void TryOut_Clicked(object? sender, EventArgs e)
     {
+#if ANDROID
         if (Shell.Current.FlyoutIsPresented)
         {
             Shell.Current.FlyoutIsPresented = false;
@@ -21,5 +22,8 @@ public partial class WelcomePage
             Shell.Current.FlyoutBehavior = FlyoutBehavior.Flyout;
             Shell.Current.FlyoutIsPresented = true;
         }
+#else
+        Shell.Current.FlyoutIsPresented = !Shell.Current.FlyoutIsPresented;
+#endif
     }
 }
