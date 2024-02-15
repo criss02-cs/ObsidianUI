@@ -4,32 +4,30 @@
              x:Class="ObsidianUI.Examples.ContentViews.PickerInputExample"
              x:Name="this"
              BindingContext="{x:Reference this}">
-    <Border BackgroundColor="#b2a7d0"
+    <Border BackgroundColor="{StaticResource MidnightBlue}"
             HorizontalOptions="Fill"
             VerticalOptions="Fill"
             StrokeThickness="2"
             StrokeShape="RoundRectangle, 10"
-            Stroke="#34002d">
+            Stroke="{StaticResource Primary}">
         <Grid RowDefinitions="0.4*,*" >
             <Label FontAttributes="Bold"
                    FontSize="15"
                    HorizontalOptions="Center"
                    VerticalOptions="Center"
                    HorizontalTextAlignment="Center"
-                   TextColor="Black"
+                   TextColor="{StaticResource PrimaryDark}"
                    Text="{Binding LabelText}" />
             <Picker x:Name="pickerLineCap"
                     Grid.Row="2"
                     HorizontalOptions="Fill"
-                    TextColor="Black"
-                    
+                    TextColor="{StaticResource PrimaryDark}"
+                    Margin="10,0"
                     VerticalOptions="Center"
                     SelectedItem="{Binding SelectedItem}"
                     ItemsSource="{Binding ItemSource}"
                     HorizontalTextAlignment="Center"
-                    VerticalTextAlignment="Center"
-                    >
-            </Picker>
+                    VerticalTextAlignment="Center"/>
         </Grid>
 
     </Border>

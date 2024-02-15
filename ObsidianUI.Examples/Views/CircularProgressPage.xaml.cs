@@ -24,28 +24,4 @@ public partial class CircularProgressPage
 		CircularProgress.Start();
 		base.OnAppearing();
 	}
-
-	private void TxtProgressColor_OnTextChanged(object? sender, TextChangedEventArgs e)
-	{
-		try
-		{
-			//CircularProgress.ProgressColor = Color.FromArgb($"#{txtProgressColor.Text}");
-		}
-		catch (Exception)
-		{
-			CircularProgress.ProgressColor = Color.FromArgb("#5b237e");
-		}
-	}
-
-	private void TxtIncaveColor_OnTextChanged(object? sender, TextChangedEventArgs e)
-	{
-		try
-		{
-			//CircularProgress.IncaveColor = Color.FromArgb($"#{txtIncaveColor.Text}");
-		}
-		catch (Exception)
-		{
-			CircularProgress.IncaveColor = Color.FromArgb("#000000");
-		}
-	}
 }

@@ -1,3 +1,6 @@
+using System.ComponentModel;
+using System.Windows.Input;
+
 namespace ObsidianUI.Examples.ContentViews;
 
 public partial class StepperInputExample
@@ -14,7 +17,7 @@ public partial class StepperInputExample
 			typeof(int),
 			typeof(StepperInputExample),
 			1,
-			BindingMode.TwoWay);
+			BindingMode.OneWay);
 
 	public static BindableProperty MinStepperValueProperty =
 		BindableProperty.Create(nameof(MinStepperValue),
@@ -28,7 +31,34 @@ public partial class StepperInputExample
 			typeof(int),
 			typeof(StepperInputExample),
 			100,
-			BindingMode.TwoWay);
+			BindingMode.OneWay);
+
+	public event EventHandler<EventArgs> PlusClicked;
+	public event EventHandler<EventArgs> MinusClicked;
+	public event EventHandler<EventArgs> PlusClicking;
+	public event EventHandler<EventArgs> MinusClicking;
+
+	public static BindableProperty PlusCommandProperty =
+		BindableProperty.Create(nameof(PlusCommand),
+			typeof(ICommand),
+			typeof(StepperInputExample));
+
+	public static BindableProperty MinusCommandProperty =
+		BindableProperty.Create(nameof(MinusCommand),
+			typeof(ICommand),
+			typeof(StepperInputExample));
+
+	public ICommand MinusCommand
+	{
+		get => (ICommand)GetValue(MinusCommandProperty);
+		set => SetValue(MinusCommandProperty, value);
+	}
+	public ICommand PlusCommand
+	{
+		get => (ICommand)GetValue(PlusCommandProperty);
+		set => SetValue(PlusCommandProperty, value);
+	}
+
 
 	public int MaxStepperValue
 	{
@@ -58,16 +88,30 @@ public partial class StepperInputExample
 
 	private void Plus_OnTapped(object? sender, TappedEventArgs e)
 	{
+		var cancel = new CancelEventArgs(false);
+		PlusClicking?.Invoke(sender, cancel);
+		if (cancel.Cancel)
+			return;
+
 		if (StepperValue == MaxStepperValue)
 			return;
 
 		StepperValue++;
+
+		PlusClicked?.Invoke(sender, e);
 	}
 	private void Minus_OnTapped(object? sender, TappedEventArgs e)
 	{
+		var cancel = new CancelEventArgs(false);
+		MinusClicking?.Invoke(sender, cancel);
+		if (cancel.Cancel)
+			return;
+
 		if (StepperValue == MinStepperValue)
 			return;
 
 		StepperValue--;
+
+		MinusClicked?.Invoke(sender,e);
 	}
 }
