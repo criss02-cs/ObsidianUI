@@ -1,0 +1,51 @@
+{
+  "metadata": [
+    {
+      "src": [
+        {
+          "src": "../ObsidianUI/ObsidianUI.Components/",
+          "files": [
+            "**/*.csproj"
+          ]
+        },
+	{
+          "src": "../ObsidianUI/ObsidianUI.Utils/",
+          "files": [
+            "**/*.csproj"
+          ]
+        }
+      ],
+      "dest": "api"
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": [
+          "**/*.{md,yml}"
+        ],
+        "exclude": [
+          "_site/**"
+        ]
+      }
+    ],
+    "resource": [
+      {
+        "files": [
+          "images/**"
+        ]
+      }
+    ],
+    "output": "_site",
+    "template": [
+      "default",
+      "modern"
+    ],
+    "globalMetadata": {
+      "_appName": "ObsidianUI",
+      "_appTitle": "ObsidianUI",
+      "_enableSearch": true,
+      "pdf": true
+    }
+  }
+}

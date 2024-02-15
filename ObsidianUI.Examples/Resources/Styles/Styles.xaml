@@ -288,7 +288,10 @@
         </Setter>
     </Style>
 
-    <Style Class="FlyoutItemLayoutStyle" TargetType="Layout" ApplyToDerivedTypes="True">
+    <Style
+        ApplyToDerivedTypes="True"
+        Class="FlyoutItemLayoutStyle"
+        TargetType="Layout">
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
                 <VisualStateGroup x:Name="CommonStates">
