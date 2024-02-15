@@ -4,7 +4,7 @@
 ### Components Ideas
 
 - [x] CalendarView
-- [ ] Circular Progress Bar
+- [x] Circular Progress Bar
 - [ ] Pdf Viewer
 - [ ] Chart
 - [ ] Autocomplete
