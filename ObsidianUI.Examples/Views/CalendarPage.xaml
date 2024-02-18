@@ -5,6 +5,7 @@
                    xmlns:views="using:ObsidianUI.Examples.Views"
                    x:Class="ObsidianUI.Examples.Views.CalendarPage"
                    Title="CalendarPage"
+                   Shell.TitleColor="White"
                    x:Name="Calendar">
     <obsComponents:CalendarView x:Name="View"/>
 </views:BaseComponentPage>

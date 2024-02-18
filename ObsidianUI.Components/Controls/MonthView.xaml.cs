@@ -1,96 +1,76 @@
 using System.Globalization;
+using ObsidianUI.Components.Converters;
 using ObsidianUI.Components.Interfaces;
 
 namespace ObsidianUI.Components.Controls;
 
-public partial class MonthView : ContentView, ICalendarView
+public partial class MonthView : ContentView
 {
-    private readonly int _weeksInAMonth = 5;
-    private readonly int _daysInAWeek = 7;
-    private DateTime _date;
     private CalendarView? _parent => Parent is CalendarView view ? view : null;
     private CultureInfo _currentCulture => _parent is not null ? _parent.Culture : new CultureInfo("en-US");
-	public MonthView(DateTime date)
+
+    public static readonly BindableProperty DateProperty =
+        BindableProperty.Create(nameof(Date),
+            typeof(DateTime),
+            typeof(MonthView),
+            DateTime.Now.Date,
+            BindingMode.Default,
+            propertyChanged: DatePropertyChanged);
+
+    private static void DatePropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
+    {
+        if (bindable is not MonthView monthView) return;
+        monthView.Update();
+    }
+
+    public DateTime Date
+    {
+        get => (DateTime)GetValue(DateProperty);
+        set => SetValue(DateProperty, value);
+    }
+	public MonthView()
 	{
 		InitializeComponent();
-        _date = date;
+        Update();
     }
 
-    public void RenderView()
+    private void Update()
     {
-        InitializeGrid();
-        PopulateGrid();
+        var binding = new Binding
+        {
+            Source = this,
+            Path = nameof(Date),
+            Converter = new MonthViewConverter(),
+            ConverterParameter = new Tuple<Size, CultureInfo>(new Size(WidthRequest, HeightRequest), _currentCulture)
+        };
+        SetBinding(ContentProperty, binding);
     }
 
-    private void InitializeGrid()
+    internal event EventHandler? SizeChanged;
+    protected override void OnSizeAllocated(double width, double height)
     {
-        Month.Clear();
-        Header.Clear();
-        var rows = new List<RowDefinition>();
-        var width = Width;
-        var height = Height;
-        if (width == -1) width = 100;
-        if (height == -1) height = 150;
-        for (var i = 0; i < 5; i++)
+        base.OnSizeAllocated(width, height);
+        if (HeightRequest == -1 || WidthRequest == -1) return;
+        var rowHeight = HeightRequest * 0.8 / 5;
+        var columnWidth = WidthRequest / 7;
+        if (!Children.Any()) return;
+        if (Children[0] is not StackLayout layout) return;
+        foreach (var child in layout.Children)
         {
-            rows.Add(new RowDefinition(height / 5));
-        }
-        var columns = new List<ColumnDefinition>();
-        for (var i = 0; i < 7; i++)
-        {
-            columns.Add(new ColumnDefinition(width / 7));
-        }
-        Month.RowDefinitions = new RowDefinitionCollection([.. rows]);
-        Month.ColumnDefinitions = new ColumnDefinitionCollection([.. columns]);
-        Header.ColumnDefinitions = new ColumnDefinitionCollection([.. columns]);
-    }
-
-    private void PopulateGrid()
-    {
-        var firstDate = GetFirstDate(new DateTime(_date.Year, _date.Month, 1));
-        var addDays = 0;
-        for (var i = 0; i < _weeksInAMonth; i++)
-        {
-            for (var j = 0; j < _daysInAWeek; j++)
+            if (child is StackLayout stackLayout) stackLayout.HeightRequest = HeightRequest * 0.2;
+            if (child is not Grid grid) continue;
+            foreach (var columnDefinition in grid.ColumnDefinitions)
             {
-                var currentDate = firstDate.AddDays(addDays++);
-                Month.Add(GetDay(currentDate), j, i);
+                columnDefinition.Width = columnWidth;
+            }
+        
+            if (grid.RowDefinitions.Count <= 1) continue;
+            grid.HeightRequest = HeightRequest * 0.8;
+            foreach (var rowDefinition in grid.RowDefinitions)
+            {
+                rowDefinition.Height = rowHeight;
             }
         }
-
-        var firstDayOfWeek = _currentCulture.DateTimeFormat.FirstDayOfWeek;
-        for (var i = 0; i < 7; i++)
-        {
-            var giorno = _currentCulture.DateTimeFormat.DayNames[((int)firstDayOfWeek + i) % 7];
-            var label = new Label { Text = giorno[..3] };
-            Header.Add(label, i);
-        }
-    }
-
-    private DateTime GetFirstDate(DateTime shownDate)
-    {
-        var difference = (7 + (shownDate.DayOfWeek - _currentCulture.DateTimeFormat.FirstDayOfWeek)) % 7;
-        return shownDate.AddDays(-1 * difference).Date;
-    }
-
-    private IView GetDay(DateTime day)
-    {
-        var color = Colors.White;
-        if (day == DateTime.Today)
-            color = Colors.Green;
-        if (day.Month != DateTime.Today.Month)
-            color = Colors.Gray;
-        var frame = new Frame()
-        {
-            Content = new Label
-            {
-                Text = day.Day.ToString(),
-                TextColor = color
-            },
-            CornerRadius = 0,
-            BackgroundColor = Colors.Transparent,
-            BorderColor = Colors.White
-        };
-        return frame;
+        SizeChanged?.Invoke(this, EventArgs.Empty);
     }
 }

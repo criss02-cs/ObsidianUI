@@ -5,9 +5,9 @@
 
 
     <ContentPage.Background>
-        <LinearGradientBrush EndPoint="1,0">
+        <LinearGradientBrush>
             <GradientStop Color="#120c2f"
-                          Offset="0.2" />
+                          Offset="0.1" />
             <GradientStop Color="Black"
                           Offset="1" />
         </LinearGradientBrush>
