@@ -26,6 +26,7 @@ public partial class PickerInputExample
 			null,
 			BindingMode.TwoWay);
 
+	public event EventHandler<EventArgs> SelectedIndexChanged;
 	public object SelectedItem
 	{
 		get => (object)GetValue(SelectedItemProperty);
@@ -45,5 +46,10 @@ public partial class PickerInputExample
 	public PickerInputExample()
 	{
 		InitializeComponent();
+	}
+
+	private void PickerLineCap_OnSelectedIndexChanged(object? sender, EventArgs e)
+	{
+		SelectedIndexChanged?.Invoke(this,e);
 	}
 }

@@ -72,6 +72,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\ObsidianUI.Components\ObsidianUI.Components.csproj" />
+	  <ProjectReference Include="..\ObsidianUI.Utils\ObsidianUI.Utils.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

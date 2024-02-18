@@ -12,7 +12,7 @@
             StrokeShape="RoundRectangle, 10"
             Stroke="{StaticResource Primary}">
         <Grid >
-            <obsComponents:RgbColorPicker Rgb="(50,50,05)" />
+            <obsComponents:RgbColorPicker x:Name="ColorPicker" Rgb="(50,50,05)" ColorChanged="RgbColorPicker_OnColorChanged"/>
             <Label FontAttributes="Bold"
                    FontSize="15"
                    HorizontalOptions="Center"

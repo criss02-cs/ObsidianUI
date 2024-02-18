@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿global using ObsidianUI.Utils;
+global using System;
+using Microsoft.Extensions.Logging;
 using ObsidianUI.Examples.ViewModels;
 using ObsidianUI.Examples.Views;
 using UraniumUI;

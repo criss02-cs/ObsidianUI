@@ -49,12 +49,11 @@
         <contentViews:StepperInputExample x:Name="StepperValue"
                                           Grid.Row="1"
                                           LabelText="Value"
-                                          StepperValue="{Binding Value}"
                                           MaxStepperValue="{Binding Source={x:Reference MaxValueStepper}, Path=StepperValue}"
-                                          PlusCommand="{Binding AddThicknessCommand}"
-                                          MinusCommand="{Binding RemoveThicknessCommand}"
                                           HorizontalOptions="Fill"
-                                          VerticalOptions="Fill" />
+                                          VerticalOptions="Fill"
+                                          PlusClicked="Stepper_OnPlusMinusClicked"
+                                          MinusClicked="Stepper_OnPlusMinusClicked" />
 
         <contentViews:StepperInputExample x:Name="StepperMaxValue"
                                           Grid.Row="1"
@@ -64,14 +63,18 @@
                                           MaxStepperValue="10000"
                                           MinStepperValue="0"
                                           HorizontalOptions="Fill"
-                                          VerticalOptions="Fill" />
+                                          VerticalOptions="Fill"
+                                          PlusClicked="Stepper_OnPlusMinusClicked"
+                                          MinusClicked="Stepper_OnPlusMinusClicked" />
 
         <contentViews:StepperInputExample x:Name="StepperSpeed"
                                           Grid.Row="2"
                                           LabelText="Speed"
                                           StepperValue="{Binding Speed}"
                                           HorizontalOptions="Fill"
-                                          VerticalOptions="Fill" />
+                                          VerticalOptions="Fill"
+                                          PlusClicked="Stepper_OnPlusMinusClicked"
+                                          MinusClicked="Stepper_OnPlusMinusClicked"/>
 
         <contentViews:StepperInputExample x:Name="StepperProgressThickness"
                                           Grid.Row="2"
@@ -79,13 +82,14 @@
                                           LabelText="Progress Thickness"
                                           HorizontalOptions="Fill"
                                           VerticalOptions="Fill"
-                                          PlusCommand="{Binding AddThicknessCommand}"
-                                          MinusCommand="{Binding RemoveThicknessCommand}" />
+                                          PlusClicked="Stepper_OnPlusMinusClicked"
+                                          MinusClicked="Stepper_OnPlusMinusClicked"/>
 
         <contentViews:PickerInputExample x:Name="PickerLineCap"
                                          Grid.Row="3"
-                                         SelectedItem="{Binding LineCap}"
-                                         LabelText="LineCap">
+                                         LabelText="LineCap"
+                                         SelectedIndexChanged="PickerLineCap_OnSelectedIndexChanged"
+                                         >
             <contentViews:PickerInputExample.ItemSource>
                 <x:Array Type="{x:Type LineCap}">
                     <LineCap>Round</LineCap>
@@ -99,7 +103,8 @@
                                         Grid.Row="3"
                                         Grid.Column="1"
                                         LabelText="Color"
-                                        Color="{Binding ProgressColor}" />
+                                        Color="{Binding ProgressColor}"
+                                        ColorChanged="ColorProgress_OnColorChanged"/>
 
     </Grid>
 </views:BaseComponentPage>

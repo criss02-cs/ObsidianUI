@@ -27,7 +27,8 @@
                     SelectedItem="{Binding SelectedItem}"
                     ItemsSource="{Binding ItemSource}"
                     HorizontalTextAlignment="Center"
-                    VerticalTextAlignment="Center"/>
+                    VerticalTextAlignment="Center"
+                    SelectedIndexChanged="PickerLineCap_OnSelectedIndexChanged"/>
         </Grid>
 
     </Border>

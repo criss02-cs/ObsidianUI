@@ -35,6 +35,8 @@ public partial class RgbColorPicker : ContentView
         }
     }
 
+    public event EventHandler<EventArgs> ColorChanged;
+
     public new static readonly BindableProperty BackgroundColorProperty = BindableProperty.Create(
         nameof(BackgroundColor), typeof(Color), typeof(RgbColorPicker));
     public RgbColorPicker()
@@ -67,5 +69,6 @@ public partial class RgbColorPicker : ContentView
     {
         Rgb = $"({_red}, {_green}, {_blue}";
         Rectangle.Fill = new SolidColorBrush(Color.FromRgb(_red, _green, _blue));
+        ColorChanged?.Invoke(this, EventArgs.Empty);
     }
 }

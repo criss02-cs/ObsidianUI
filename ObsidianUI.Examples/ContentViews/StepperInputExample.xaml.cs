@@ -98,7 +98,7 @@ public partial class StepperInputExample
 
 		StepperValue++;
 
-		PlusClicked?.Invoke(sender, e);
+		PlusClicked?.Invoke(this, e);
 	}
 	private void Minus_OnTapped(object? sender, TappedEventArgs e)
 	{
@@ -112,6 +112,6 @@ public partial class StepperInputExample
 
 		StepperValue--;
 
-		MinusClicked?.Invoke(sender,e);
+		MinusClicked?.Invoke(this, e);
 	}
 }
