@@ -1,5 +1,4 @@
 using System.Timers;
-using Microsoft.Maui.Graphics.Text;
 using ObsidianUI.Components.Drawables;
 using Timer = System.Timers.Timer;
 
@@ -97,7 +96,7 @@ public partial class CircularProgress
 
         Content = _graphicView;
 
-        DrawTimer = new Timer(500);
+        DrawTimer = new Timer(50);
         DrawTimer.Elapsed += DrawTimerElapsed;
     }
 

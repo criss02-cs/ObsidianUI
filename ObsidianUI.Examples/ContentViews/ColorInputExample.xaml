@@ -5,20 +5,21 @@
              x:Class="ObsidianUI.Examples.ContentViews.ColorInputExample"
              x:Name="this"
              BindingContext="{x:Reference this}">
-    <Border BackgroundColor="#b2a7d0"
+    <Border BackgroundColor="{StaticResource MidnightBlue}"
             HorizontalOptions="Fill"
             VerticalOptions="Fill"
             StrokeThickness="2"
             StrokeShape="RoundRectangle, 10"
-            Stroke="#34002d">
+            Stroke="{StaticResource Primary}">
         <Grid >
-            <obsComponents:RgbColorPicker Rgb="(50,50,05)" />
+            <obsComponents:RgbColorPicker x:Name="ColorPicker" Rgb="(50,50,05)" ColorChanged="RgbColorPicker_OnColorChanged"/>
             <Label FontAttributes="Bold"
                    FontSize="15"
                    HorizontalOptions="Center"
                    VerticalOptions="Start"
                    HorizontalTextAlignment="Center"
-                   TextColor="Black"
+                   Margin="0,5,0,0"
+                   TextColor="{StaticResource PrimaryDark}"
                    Text="{Binding LabelText}" />
             
         </Grid>

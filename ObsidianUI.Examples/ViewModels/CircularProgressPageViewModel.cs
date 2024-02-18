@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 namespace ObsidianUI.Examples.ViewModels;
 
@@ -14,4 +15,15 @@ public partial class CircularProgressPageViewModel : ObservableObject
     [ObservableProperty] public LineCap lineCap;
     [ObservableProperty] public string text;
 
+    [RelayCommand]
+    private void AddThickness()
+    {
+        ProgressThickness++;
+    }
+
+    [RelayCommand]
+    private void RemoveThickness()
+    {
+        ProgressThickness--;
+    }
 }

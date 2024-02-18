@@ -15,7 +15,7 @@ public partial class ColorInputExample
 			typeof(ColorInputExample),
 			Colors.Purple,
 			BindingMode.TwoWay);
-
+	public event EventHandler<EventArgs> ColorChanged;
 	public string LabelText
 	{
 		get => (string)GetValue(LabelTextProperty);
@@ -30,5 +30,16 @@ public partial class ColorInputExample
 	public ColorInputExample()
 	{
 		InitializeComponent();
+	}
+
+	private void RgbColorPicker_OnColorChanged(object? sender, EventArgs e)
+	{
+		var rgb = ColorPicker.Rgb.Replace("(", "").Replace(")", "");
+		var rgbSpit = rgb.Split(",");
+		var r = rgbSpit[0];
+		var g = rgbSpit[1];
+		var b = rgbSpit[2];
+		Color = new Color(r.ToInt32(), g.ToInt32(), b.ToInt32());
+		ColorChanged?.Invoke(sender,e);
 	}
 }
