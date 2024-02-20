@@ -92,17 +92,32 @@ public partial class CalendarView : ContentView
             var monthView = new MonthView
             {
                 WidthRequest = Width - 20,
-                HeightRequest = Height,
+                HeightRequest = CarouselView.Height - 20,
                 Parent = this
             };
             monthView.SetBinding(MonthView.DateProperty, new Binding("."));
             return monthView;
         });
-        CarouselView.ScrollTo(1);
+        CarouselView.CurrentItem = ShownDate;
+        //CarouselView.ScrollTo(ShownDate, position: ScrollToPosition.Center);
     }
 
     private void CalendarView_OnSizeChanged(object? sender, EventArgs e)
     {
         Update();
+    }
+
+    private void CarouselView_OnCurrentItemChanged(object? sender, CurrentItemChangedEventArgs e)
+    {
+        if (e.CurrentItem is not DateTime currentDate) return;
+        HeaderText.Text = GetMonthName(currentDate);
+    }
+
+    private string GetMonthName(DateTime date)
+    {
+        var firstDayOfMonth = new DateTime(date.Year, date.Month, 1);
+        var index = firstDayOfMonth.Month - 1;
+        var monthName = Culture.DateTimeFormat.MonthNames[index];
+        return $"{char.ToUpper(monthName[0])}{monthName[1..]}";
     }
 }

@@ -1,4 +1,5 @@
 using System.Globalization;
+using Microsoft.Maui.Controls.Shapes;
 
 namespace ObsidianUI.Components.Utils;
 
@@ -6,7 +7,7 @@ internal class MonthBuilder(DateTime date, Size dimensions, CultureInfo culture)
 {
     private readonly Grid _result = [];
     private readonly Grid _header = [];
-    private readonly StackLayout _layout = [];
+    private readonly Grid _layout = [];
     private const int _weeksInAMonth = 5;
     private const int _daysInAWeek = 7;
 
@@ -17,7 +18,7 @@ internal class MonthBuilder(DateTime date, Size dimensions, CultureInfo culture)
             color = Colors.Green;
         if (day.Month != date.Month)
             color = Colors.Gray;
-        var frame = new Frame()
+        var frame = new Frame
         {
             Content = new Label
             {
@@ -26,32 +27,26 @@ internal class MonthBuilder(DateTime date, Size dimensions, CultureInfo culture)
             },
             CornerRadius = 0,
             BackgroundColor = Colors.Transparent,
-            BorderColor = Colors.White
+            BorderColor = Colors.White,
         };
         return frame;
     }
     public MonthBuilder SetDefinitions()
     {
         var rows = new List<RowDefinition>();
-        dimensions.Height = dimensions.Height == -1 ? 150 : dimensions.Height * 0.8;
-        dimensions.Width = dimensions.Width == -1 ? 100 : dimensions.Width;
         for (var i = 0; i < 5; i++)
         {
-            rows.Add(new RowDefinition(dimensions.Height / 5));
+            rows.Add(new RowDefinition(GridLength.Star));
         }
         var columns = new List<ColumnDefinition>();
         for (var i = 0; i < 7; i++)
         {
-            columns.Add(new ColumnDefinition(dimensions.Width / 7));
+            columns.Add(new ColumnDefinition(GridLength.Star));
         }
         _result.RowDefinitions = new RowDefinitionCollection([.. rows]);
         _result.ColumnDefinitions = new ColumnDefinitionCollection([.. columns]);
         _header.ColumnDefinitions = new ColumnDefinitionCollection([.. columns]);
-        // VerticalOptions="Center" HorizontalOptions="Center"
-        _result.VerticalOptions = LayoutOptions.Center;
         _header.VerticalOptions = LayoutOptions.Center;
-        _result.HorizontalOptions = LayoutOptions.Center;
-        _result.HeightRequest = dimensions.Height;
         return this;
     }
     
@@ -64,6 +59,9 @@ internal class MonthBuilder(DateTime date, Size dimensions, CultureInfo culture)
 
     public MonthBuilder SetHeader()
     {
+        _layout.ColumnDefinitions.Add(new ColumnDefinition(GridLength.Star));
+        _layout.ColumnDefinitions.Add(new ColumnDefinition(GridLength.Star));
+        _layout.ColumnDefinitions.Add(new ColumnDefinition(GridLength.Star));
         var prevButton = new Button
         {
             Text = "Prev"
@@ -74,12 +72,9 @@ internal class MonthBuilder(DateTime date, Size dimensions, CultureInfo culture)
             Text = "Next",
             BackgroundColor = Colors.Red
         };
-        _layout.Children.Add(prevButton);
-        _layout.Children.Add(label);
-        _layout.Children.Add(nextButton);
-        _layout.Orientation = StackOrientation.Horizontal;
-        _layout.HeightRequest = dimensions.Height * 0.2;
-        _layout.BackgroundColor = Colors.Aqua;
+        _layout.Add(prevButton);
+        _layout.Add(label, 1);
+        _layout.Add(nextButton, 2);
         return this;
     }
 
@@ -88,18 +83,14 @@ internal class MonthBuilder(DateTime date, Size dimensions, CultureInfo culture)
         var firstDayOfMonth = new DateTime(date.Year, date.Month, 1);
         var index = firstDayOfMonth.Month - 1;
         var monthName = culture.DateTimeFormat.MonthNames[index];
-        var tap = new TapGestureRecognizer();
         var monthLabel = new Label
         {
             Text = $"{char.ToUpper(monthName[0])}{monthName[1..]}",
             // BackgroundColor = Colors.OrangeRed,
             HorizontalTextAlignment = TextAlignment.Center,
-            Margin = new Thickness(10,0,0,0),
+            //Margin = new Thickness(10,0,0,0),
             TextColor = Colors.White,
-            GestureRecognizers =
-            {
-                tap
-            }
+            VerticalOptions = LayoutOptions.Center
         };
         return monthLabel;
     }
@@ -118,6 +109,7 @@ internal class MonthBuilder(DateTime date, Size dimensions, CultureInfo culture)
             }
         }
         
+        
         var firstDayOfWeek = culture.DateTimeFormat.FirstDayOfWeek;
         for (var i = 0; i < 7; i++)
         {
@@ -131,16 +123,14 @@ internal class MonthBuilder(DateTime date, Size dimensions, CultureInfo culture)
 
     public IView Build()
     {
-        
-        var stackLayout = new StackLayout
-        {
-            Children =
-            {
-                _layout,
-                _header,
-                _result
-            }
-        };
-        return stackLayout;
+        var grid = new Grid();
+        //grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(0.1, GridUnitType.Star) });
+        grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(0.05, GridUnitType.Star)});
+        grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(0.8, GridUnitType.Star)});
+        //grid.Add(_layout);
+        grid.Add(_header, 0);
+        grid.Add(_result, 0, 1);
+        grid.HorizontalOptions = LayoutOptions.Fill;
+        return grid;
     }
 }

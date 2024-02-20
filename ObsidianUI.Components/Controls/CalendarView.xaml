@@ -5,11 +5,22 @@
              x:Class="ObsidianUI.Components.Controls.CalendarView"
              SizeChanged="CalendarView_OnSizeChanged"
              Padding="10">
-    <CarouselView x:Name="CarouselView" Loop="False" Position="1">
-        <CarouselView.ItemsLayout>
-            <LinearItemsLayout Orientation="Horizontal"
-                               SnapPointsType="MandatorySingle"
-                               SnapPointsAlignment="Center"></LinearItemsLayout>
-        </CarouselView.ItemsLayout>
-    </CarouselView>
+    <Grid RowDefinitions="0.1*, *">
+        <Grid ColumnDefinitions="*,*,*" Grid.Row="0">
+            <Button Text="Prev"></Button>
+            <Label x:Name="HeaderText" Grid.Column="1"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"></Label>
+            <Button Text="Next" Grid.Column="2"></Button>
+        </Grid>
+        <CarouselView x:Name="CarouselView" Loop="False" Position="1"
+                      CurrentItemChanged="CarouselView_OnCurrentItemChanged"
+                      Grid.Row="1">
+            <CarouselView.ItemsLayout>
+                <LinearItemsLayout Orientation="Horizontal"
+                                   SnapPointsType="MandatorySingle"
+                                   SnapPointsAlignment="Center"></LinearItemsLayout>
+            </CarouselView.ItemsLayout>
+        </CarouselView>
+    </Grid>
 </ContentView>
