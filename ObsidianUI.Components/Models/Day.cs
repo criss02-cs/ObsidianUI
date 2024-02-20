@@ -1,8 +1,8 @@
 namespace ObsidianUI.Components.Models;
 
-internal class Day(int number, int rowIndex, int columnIndex)
+internal class Day(DateTime date, int rowIndex, int columnIndex)
 {
-    public int Number { get; set; } = number;
+    public DateTime Date { get; set; } = date;
     public int RowIndex { get; set; } = rowIndex;
     public int ColumnIndex { get; set; } = columnIndex;
 }

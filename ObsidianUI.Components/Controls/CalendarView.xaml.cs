@@ -1,6 +1,7 @@
 using System.Globalization;
 using Microsoft.Maui.Controls.Shapes;
 using ObsidianUI.Components.Interfaces;
+using ObsidianUI.Components.Models;
 
 namespace ObsidianUI.Components.Controls;
 
@@ -9,7 +10,9 @@ public partial class CalendarView : ContentView
     private readonly int _weeksInAMonth = 5;
     private readonly int _daysInAWeek = 7;
 
-    private List<DateTime> _calendars = new List<DateTime>();
+    private List<ICalendar> _calendars = [];
+
+    //private List<DateTime> _calendars = [];
 
     #region BindableProperties
 
@@ -80,11 +83,12 @@ public partial class CalendarView : ContentView
 
     private void Update()
     {
+        var actual = new Month(ShownDate, Culture);
         _calendars =
         [
-            ShownDate.AddMonths(-1),
-            ShownDate,
-            ShownDate.AddMonths(1),
+            new Month(ShownDate.AddMonths(-1), Culture),
+            actual,
+            new Month(ShownDate.AddMonths(1), Culture),
         ];
         CarouselView.ItemsSource = _calendars;
         CarouselView.ItemTemplate = new DataTemplate(() =>
@@ -95,10 +99,10 @@ public partial class CalendarView : ContentView
                 HeightRequest = CarouselView.Height - 20,
                 Parent = this
             };
-            monthView.SetBinding(MonthView.DateProperty, new Binding("."));
+            monthView.SetBinding(MonthView.MonthProperty, new Binding("."));
             return monthView;
         });
-        CarouselView.CurrentItem = ShownDate;
+        CarouselView.CurrentItem = actual;
         //CarouselView.ScrollTo(ShownDate, position: ScrollToPosition.Center);
     }
 
@@ -109,8 +113,8 @@ public partial class CalendarView : ContentView
 
     private void CarouselView_OnCurrentItemChanged(object? sender, CurrentItemChangedEventArgs e)
     {
-        if (e.CurrentItem is not DateTime currentDate) return;
-        HeaderText.Text = GetMonthName(currentDate);
+        if (e.CurrentItem is not ICalendar currentDate) return;
+        HeaderText.Text = currentDate.GetHeaderString();
     }
 
     private string GetMonthName(DateTime date)
@@ -119,5 +123,19 @@ public partial class CalendarView : ContentView
         var index = firstDayOfMonth.Month - 1;
         var monthName = Culture.DateTimeFormat.MonthNames[index];
         return $"{char.ToUpper(monthName[0])}{monthName[1..]}";
+    }
+
+    private void Button_OnPressed(object? sender, EventArgs e)
+    {
+        if (sender is not Button button) return;
+        var index = _calendars.IndexOf((ICalendar)CarouselView.CurrentItem);
+        if (button == PrevButton)
+        {
+            CarouselView.ScrollTo(index - 1);
+        }
+        else
+        {
+            CarouselView.ScrollTo(index + 1);
+        }
     }
 }
