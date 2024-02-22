@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Globalization;
 using ObsidianUI.Components.Converters;
 using ObsidianUI.Components.Interfaces;
@@ -7,9 +8,10 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ObsidianUI.Components.Controls;
 
+[XamlCompilation(XamlCompilationOptions.Compile)]
 internal class MonthView : ContentView
 {
-    private new CalendarView? Parent => base.Parent is CalendarView view ? view : null;
+    private new CalendarView? Parent => base.Parent as CalendarView;
     private CultureInfo CurrentCulture => Parent is not null ? Parent.Culture : new CultureInfo("en-US");
 
     public static readonly BindableProperty MonthProperty =
@@ -19,6 +21,8 @@ internal class MonthView : ContentView
             null,
             BindingMode.Default,
             propertyChanged: MonthPropertyChanged);
+
+    private bool isBusy = false;
 
     private static void MonthPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
     {
@@ -33,16 +37,27 @@ internal class MonthView : ContentView
     }
     public MonthView()
     {
-        Update();
+        //Update();
+        SetBinding(MonthProperty, new Binding("."));
+#if ANDROID || IOS
+        Margin = new Thickness(0);
+#else
+        Margin = new Thickness(20, 20);
+#endif
     }
 
     private void Update()
     {
         if (Month is null) return;
-        var result = new MonthBuilder(Month, CurrentCulture)
+        var stopwatch = new Stopwatch();
+        stopwatch.Start();
+        var result = new MonthBuilder(Month, Month.Culture)
             .SetDefinitions()
             .PopulateData(Month.Days, Month.DayWeeks)
             .Build();
+        Debug.WriteLine($"Before load user interface: {stopwatch.ElapsedMilliseconds}");
         Content = result;
+        stopwatch.Stop();
+        Debug.WriteLine($"Load user interface of date {Month.Date.Month}: {stopwatch.ElapsedMilliseconds}");
     }
 }

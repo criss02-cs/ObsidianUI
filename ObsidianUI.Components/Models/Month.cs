@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Globalization;
 using Microsoft.Maui.Platform;
 using ObsidianUI.Components.Interfaces;
@@ -21,8 +22,18 @@ internal class Month : ICalendar
     {
         Date = date;
         Culture = culture;
+        var stopwatch = new Stopwatch();
+
+        stopwatch.Start();
         LoadDays();
+        stopwatch.Stop();
+        Debug.WriteLine($"Load days duration: {stopwatch.ElapsedMilliseconds}", "Log output");
+        stopwatch.Reset();
+
+        stopwatch.Start();
         LoadDaysWeek();
+        stopwatch.Stop();
+        Debug.WriteLine($"Load days week duration of month {date.Month}: {stopwatch.ElapsedMilliseconds}", "Log output");
     }
 
     public string GetHeaderString()

@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Globalization;
 using Microsoft.Maui.Controls.Shapes;
 using ObsidianUI.Components.Interfaces;
@@ -12,7 +13,6 @@ public partial class CalendarView : ContentView
 
     private List<ICalendar> _calendars = [];
 
-    //private List<DateTime> _calendars = [];
 
     #region BindableProperties
 
@@ -79,36 +79,28 @@ public partial class CalendarView : ContentView
     {
         InitializeComponent();
         // Update();
+        var template = new DataTemplate(() => new MonthView());
+        CarouselView.ItemTemplate = template;
+        CarouselView.ItemsSource = _calendars;
     }
 
     private void Update()
     {
         var actual = new Month(ShownDate, Culture);
-        _calendars =
-        [
+        _calendars.Clear();
+        _calendars.AddRange([
             new Month(ShownDate.AddMonths(-1), Culture),
             actual,
             new Month(ShownDate.AddMonths(1), Culture),
-        ];
-        CarouselView.ItemsSource = _calendars;
-        CarouselView.ItemTemplate = new DataTemplate(() =>
-        {
-            var monthView = new MonthView
-            {
-                WidthRequest = Width - 20,
-                HeightRequest = CarouselView.Height - 20,
-                Parent = this
-            };
-            monthView.SetBinding(MonthView.MonthProperty, new Binding("."));
-            return monthView;
-        });
+        ]);
+        //CarouselView.ItemsSource = _calendars;
+
         CarouselView.CurrentItem = actual;
-        //CarouselView.ScrollTo(ShownDate, position: ScrollToPosition.Center);
     }
 
     private void CalendarView_OnSizeChanged(object? sender, EventArgs e)
     {
-        Update();
+        //Update();
     }
 
     private void CarouselView_OnCurrentItemChanged(object? sender, CurrentItemChangedEventArgs e)
